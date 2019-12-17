@@ -77,7 +77,7 @@ int		check_tetromino(char *tetro)
 	hash = check_hash(tetro);
 	dot = check_dot(tetro);
 	total = check_total(tetro);
-	if (hash != 4 || dot != 12 || total != 16)
+	if (hash != 4 || dot != 12 || total != 19)
 	{
 		return (-1);
 	}

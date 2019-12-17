@@ -6,7 +6,7 @@
 /*   By: panderss <panderss@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/11 14:45:50 by panderss          #+#    #+#             */
-/*   Updated: 2019/12/17 18:01:51 by panderss         ###   ########.fr       */
+/*   Updated: 2019/12/17 18:11:40 by panderss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ int		read_tetromino(int fd, char **line)
 		/*BUILD TMP STRING TO SEND TO VALIDATOR*/
 		lines_read++;
 	}
-	tmp[0] = ft_strdup(grid[0]);
+/*	tmp[0] = ft_strdup(grid[0]);
 	tmp[1] = ft_strdup(grid[1]);
 	tmp[2] = ft_strdup(grid[2]);
 	tmp[3] = ft_strdup(grid[3]);
@@ -47,7 +47,7 @@ int		read_tetromino(int fd, char **line)
 	ft_putendl(tmp[0]);
 	ft_putendl(tmp[1]);
 	ft_putendl(tmp[2]);
-	ft_putendl(tmp[3]);
+	ft_putendl(tmp[3]);*/
 	if (check_tetromino(tmp) != 0)
 	{
 		ft_putendl("Tetromino checker failed.");
