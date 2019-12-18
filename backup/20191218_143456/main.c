@@ -6,7 +6,7 @@
 /*   By: panderss <panderss@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/11 14:45:50 by panderss          #+#    #+#             */
-/*   Updated: 2019/12/18 14:59:57 by panderss         ###   ########.fr       */
+/*   Updated: 2019/12/17 18:11:40 by panderss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,39 +19,36 @@ void	display_error(void)
 	ft_putstr("error");
 }
 
-/*int		check_tetromino(char *tetro);*/
+int		check_tetromino(char *tetro);
 
-int		read_file(int fd, char **line)
+int		read_tetromino(int fd, char **line)
 {
+//	char	*grid[4];
+//	char	*tmp[4];
 	char	*str;
 	char	*tmp;
+	char	tetro[20];
 	int		lines_read;
 	int		ret;
 
 	lines_read = 0;
-	while ((ret = get_next_line(fd, line)) == 1/* && lines_read < 4*/)
+	while ((ret = get_next_line(fd, line)) == 1 && lines_read < 4)
 	{
-		/*if (str == 0)
-			str = ft_strnew(0);
-		tmp = ft_strjoin(str, *line);
-		str = tmp;*/
+		/*BUILD TMP STRING TO SEND TO VALIDATOR*/
 		lines_read++;
 	}
+/*	tmp[0] = ft_strdup(grid[0]);
+	tmp[1] = ft_strdup(grid[1]);
+	tmp[2] = ft_strdup(grid[2]);
+	tmp[3] = ft_strdup(grid[3]);
 	ft_putstr("Lines read: ");
 	ft_putnbr(lines_read);
-	ft_putendl("");
-	if (!(str = ft_strnew(((lines_read / 5) * 21) + 1)))
-	{
-		ft_putstr("ft_strnew failed");
-		return (-1);
-	}
-	ret = read(fd, str, ft_strlen(str));
-	ft_putnbr(ret);
-	if (ret < 0)
-		ft_putendl("Read failed");
-	ft_putendl("Map read: ");
-	ft_putstr(str);
-	/*if (check_tetromino(tmp) != 0)
+	ft_putchar('\n');
+	ft_putendl(tmp[0]);
+	ft_putendl(tmp[1]);
+	ft_putendl(tmp[2]);
+	ft_putendl(tmp[3]);*/
+	if (check_tetromino(tmp) != 0)
 	{
 		ft_putendl("Tetromino checker failed.");
 		display_error();
@@ -60,12 +57,12 @@ int		read_file(int fd, char **line)
 	else
 	{
 		ft_putendl("Valid tetromino read.");
-		ft_putendl(tmp[0]);
+		/*ft_putendl(tmp[0]);
 		ft_putendl(tmp[1]);
 		ft_putendl(tmp[2]);
-		ft_putendl(tmp[3]);
+		ft_putendl(tmp[3]);*/
 		ret = check_shape(tmp);
-	}*/
+	}
 	return (0);
 }	
 
@@ -87,7 +84,7 @@ int		main(int argc, char **argv)
 			display_error();
 			return (-1);
 		}
-		ret = read_file(fd, &line);
+		ret = read_tetromino(fd, &line);
 	}
 	return (0);
 }
