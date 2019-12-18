@@ -25,30 +25,29 @@ int		read_file(int fd, char **line)
 {
 	char	*str;
 	char	*tmp;
+	char	buf[22];
 	int		lines_read;
 	int		ret;
 
 	lines_read = 0;
-	while ((ret = get_next_line(fd, line)) == 1/* && lines_read < 4*/)
+	/*while ((ret = get_next_line(fd, line)) == 1)
 	{
 		/*if (str == 0)
 			str = ft_strnew(0);
 		tmp = ft_strjoin(str, *line);
-		str = tmp;*/
+		str = tmp;
 		lines_read++;
 	}
 	ft_putstr("Lines read: ");
 	ft_putnbr(lines_read);
-	ft_putendl("");
-	if (!(str = ft_strnew(((lines_read / 5) * 21) + 1)))
-	{
-		ft_putstr("ft_strnew failed");
-		return (-1);
-	}
-	ret = read(fd, str, ft_strlen(str));
+	ft_putendl("");*/
+	ret = read(fd, buf, 21);
+	ft_putstr("Characters read from file: ");
 	ft_putnbr(ret);
+	ft_putendl("");
 	if (ret < 0)
 		ft_putendl("Read failed");
+	str = ft_strdup(buf);
 	ft_putendl("Map read: ");
 	ft_putstr(str);
 	/*if (check_tetromino(tmp) != 0)
