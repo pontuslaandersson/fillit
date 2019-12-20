@@ -21,13 +21,17 @@ void	display_error(void)
 
 /*int		check_tetromino(char *tetro);*/
 
+
+
+int		check_file(char *file);
+
 int		read_file(int fd, char **line)
 {
-	char	*str;
-	char	*tmp;
-	char	buf[22];
-	int		lines_read;
-	int		ret;
+	char		*str;
+	char		*tetro;
+	char		buf[22];
+	int			lines_read;
+	ssize_t		ret;
 
 	lines_read = 0;
 	/*while ((ret = get_next_line(fd, line)) == 1)
@@ -41,13 +45,14 @@ int		read_file(int fd, char **line)
 	ft_putstr("Lines read: ");
 	ft_putnbr(lines_read);
 	ft_putendl("");*/
-	ret = read(fd, buf, 21);
+	/*ret = read(fd, buf, 21);
 	ft_putstr("Characters read from file: ");
 	ft_putnbr(ret);
 	ft_putendl("");
 	if (ret < 0)
 		ft_putendl("Read failed");
-	str = ft_strdup(buf);
+	str = ft_strdup(buf);*/
+	str = get_next_tetro(fd, tetro);
 	ft_putendl("Map read: ");
 	ft_putstr(str);
 	/*if (check_tetromino(tmp) != 0)

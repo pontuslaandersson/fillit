@@ -25,7 +25,7 @@ int     check_file(char *file)
             return (-1);
         ++i;
     }
-    if (/*newline % 5 != 0 ||*/ i % 16 != 0)
+    if (/*newline % 5 != 0 ||*/ i % 21 != 0)
         return (-i);
     else
         return (i);
