@@ -1,71 +1,58 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   check_tetromino.c                                  :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: panderss <panderss@student.hive.fi>        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/12/20 13:22:15 by panderss          #+#    #+#             */
+/*   Updated: 2019/12/20 15:59:26 by panderss         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libft.h"
 
-int		check_hash(char **tetro)
+int		check_hash(char *tetro)
 {
 	int i;
-	int j;
 	int	hash;
 
-	j = 0;
 	i = 0;
 	hash = 0;
-	while (j < 4)
+	while (tetro[i] != '\0')
 	{
-		while (tetro[j][i] != '\0')
-		{
-			if (tetro[j][i] == '#')
-				hash++;
-			++i;
-		}
-		i = 0;
-		++j;
+		if (tetro[i] == '#')
+			hash++;
+		++i;
 	}
 	return (hash);
 }
 
-int		check_dot(char **tetro)
+int		check_dot(char *tetro)
 {
 	int i;
-	int j;
 	int	dot;
 
-	j = 0;
 	i = 0;
 	dot = 0;
-	while (j < 4)
+	while (tetro[i] != '\0')
 	{
-		while (tetro[j][i] != '\0')
-		{
-			if (tetro[j][i] == '.')
-				dot++;
-			++i;
-		}
-		i = 0;
-		++j;
-	}
+		if (tetro[i] == '.')
+			dot++;
+		++i;
+	}	
 	return (dot);
 }
 
-int		check_total(char **tetro)
+int		check_newlines(char *tetro)
 {
-	int i;
-	int j;
-	int	total;
-
-	j = 0;
-	i = 0;
-	total = 0;
-	while (j < 4)
+	if (tetro[4] != '\n' || tetro[9] != '\n' || tetro[14] != '\n' ||
+		   tetro[19] != '\n' || tetro[20] != '\n')
 	{
-		while (tetro[j][i] != '\0')
-		{
-			++total;
-			++i;
-		}
-		i = 0;
-		++j;
+		ft_putendl("Wrong number of newlines detected.");
+		return (-1);
 	}
-	return (total);
+	return (0);
 }
 
 int		check_tetromino(char *tetro)
@@ -76,10 +63,19 @@ int		check_tetromino(char *tetro)
 
 	hash = check_hash(tetro);
 	dot = check_dot(tetro);
-	total = check_total(tetro);
-	if (hash != 4 || dot != 12 || total != 19)
+	total = ft_strlen(tetro);
+	if (hash != 4 || dot != 12 || total != 22 || check_newlines(tetro) != 0)
 	{
+		ft_putnbr(hash);
+		ft_putendl("");
+		ft_putnbr(dot);
+		ft_putendl("");
+		ft_putnbr(total);
+		ft_putendl("");
 		return (-1);
 	}
+	ft_putnbr(hash);
+	ft_putnbr(dot);
+	ft_putnbr(total);
 	return (0);
 }
