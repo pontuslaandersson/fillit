@@ -6,11 +6,38 @@
 /*   By: panderss <panderss@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/20 13:22:15 by panderss          #+#    #+#             */
-/*   Updated: 2019/12/20 15:59:26 by panderss         ###   ########.fr       */
+/*   Updated: 2019/12/22 14:10:17 by amchakra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+
+int		is_valid_shape(char *tetro)
+{
+	int	i;
+	int j;
+
+	i = 0;
+	j = 0;
+	while (i <= 19)
+	{
+		if (tetro[i] == '#')
+		{
+			if (i >= 5 && tetro[i - 5] == '#')
+				j++;
+			if (i <= 17 && tetro[i + 5] == '#')
+				j++;
+			if (i <= 13 && tetro[i + 5] == '#')
+				j++;
+			if (i >= 1 && tetro[i - 1] == '#')
+				j++;
+		}
+		i++;
+	}
+	if (j == 6 || j == 8)
+		return (1);
+	return (0);
+}
 
 int		check_hash(char *tetro)
 {
@@ -64,7 +91,8 @@ int		check_tetromino(char *tetro)
 	hash = check_hash(tetro);
 	dot = check_dot(tetro);
 	total = ft_strlen(tetro);
-	if (hash != 4 || dot != 12 || total != 22 || check_newlines(tetro) != 0)
+	if (hash != 4 || dot != 12 || total != 22 
+		|| check_newlines(tetro) != 0 || is_valid_shape(tetro) == 0)
 	{
 		ft_putnbr(hash);
 		ft_putendl("");
