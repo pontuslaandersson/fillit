@@ -47,15 +47,16 @@ int		check_tetromino(char *tetro);
 
 
 
-/*int		check_file(char *file);*/
+int		check_file(char *file);
 
 int		read_file(int fd, char **line)
 {
+	static char	*file;
 	char		*tetro;
 	char		buf[21];
 	ssize_t		ret;
 	int			tetros_read;
-
+	
 	tetros_read = 0;
 	while (tetros_read < 26 && (ret = read(fd, buf, 21)) >  0)
 	{
