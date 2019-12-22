@@ -6,17 +6,16 @@
 /*   By: panderss <panderss@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/20 13:22:15 by panderss          #+#    #+#             */
-/*   Updated: 2019/12/20 15:59:26 by panderss         ###   ########.fr       */
+/*   Updated: 2019/12/22 14:10:17 by amchakra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int		is_valid_shape(char *tetro)
-{
+int		is_valid_shape(char *tetro);
+/*{
 	int	i;
 	int j;
-	
 	i = 0;
 	j = 0;
 	while (i <= 19)
@@ -25,7 +24,7 @@ int		is_valid_shape(char *tetro)
 		{
 			if (i >= 5 && tetro[i - 5] == '#')
 				j++;
-			if (i <= 17 && tetro[i + 1] == '#')
+			if (i <= 17 && tetro[i + 5] == '#')
 				j++;
 			if (i <= 13 && tetro[i + 5] == '#')
 				j++;
@@ -37,7 +36,7 @@ int		is_valid_shape(char *tetro)
 	if (j == 6 || j == 8)
 		return (1);
 	return (0);
-}
+}*/
 
 int		check_hash(char *tetro)
 {
