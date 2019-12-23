@@ -6,20 +6,35 @@
 /*   By: panderss <panderss@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/18 14:17:12 by panderss          #+#    #+#             */
-/*   Updated: 2019/12/18 14:41:47 by panderss         ###   ########.fr       */
+/*   Updated: 2019/12/23 14:13:42 by panderss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+#include "get_next_Line.h"
 
-char    *get_file(int fd, char *line)
+char    *get_file(int fd)
 {
     static char *str;
+	char		buf[BUFF_SIZE + 1];
 
-    while ((ret = get_next_line(fd, &line)) > 0)
+    while ((ret = read(fd, buf, BUF_SIZE)) > 0)
     {
-        /*strjoin return of GNL, and _keep newlines_*/
-    }
+		buf[ret] = '\0';
+		if (str == NULL)
+			str = ft_strnew(0);
+		tmp = ft_strjoin(str, buf);
+		ft_strdel(&s);
+		s = tmp;
+	}
+	if (ret < 0)
+		return (NULL);
+	else if (ret == 0)
+	{
+		ft_putendl("String read into str:");
+		ft_putstr(str);
+		return (str);
+	}
 }
 
 int     check_file(char *file)
