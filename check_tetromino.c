@@ -6,48 +6,64 @@
 /*   By: panderss <panderss@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/20 13:22:15 by panderss          #+#    #+#             */
-/*   Updated: 2019/12/27 15:28:52 by panderss         ###   ########.fr       */
+/*   Updated: 2019/12/27 17:49:58 by panderss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include "fillit.h"
 
-int		is_valid_shape(char *file)
+int		check_shape(char *file, int c)
 {
-	int		i;
-	int		j;
-	int		k;
-	int		c;
+	int	i;
+	int j;
 
 	i = 0;
 	j = 0;
-	while (file[c] != '\0')
+	while (i <= 19)
 	{
-		while (i <= 19)
+		if (file[c + i] == '#')
 		{
-			if (file[i] == '#')
-			{
-				if (i >= 5 && file[i - 5] == '#')
-					j++;
-				if (i <= 17 && file[i + 1] == '#')
-					j++;
-				if (i <= 13 && file[i + 5] == '#')
-					j++;
-				if (i >= 1 && file[i - 1] == '#')
-					j++;
+			if (i >= 5 && file[c + i - 5] == '#')
+				j++;
+			if (i <= 17 && file[c + i + 1] == '#')
+				j++;
+			if (i <= 13 && file[c + i + 5] == '#')
+				j++;
+			if (i >= 1 && file[c + i - 1] == '#')
+				j++;
 		}
 		i++;
-		c++;
-		if (c % 21 == 0)
-		{
-			if (j != 6 && j != 8)
-				return (-1);
-			j = 0;
-			i = 0;
-		}
-		}
 	}
+	if (j != 6 && j != 8)
+		return (-1);
+	return (1);
+}
+
+int		is_valid_shape(char *file)
+{
+	int		c;
+	int		hash;
+
+	c = 0;
+	hash = 0;
+	while (file[c] != '\0')
+	{
+		if (file[c] == '#')
+		{
+			if (hash == 0)
+			{
+				ft_putnbr(c);
+				ft_putendl("* Checking shape.");
+				check_shape(file, c);
+			}
+			hash++;
+			if (hash == 4)
+				hash = 0;
+		}
+		++c;
+	}
+	ft_putendl("Is_valid checker OK.");
 	return (0);
 }
 
@@ -56,6 +72,8 @@ int     check_file(char *file)
     int i;
     int newline;
 
+	i = 0;
+	newline = 0;
     while (file[i] != '\0')
     {
       if (file[i] == '\n')
@@ -69,11 +87,15 @@ int     check_file(char *file)
     }
     if ((newline - 4) % 5 != 0 || (i - 20) % 21 != 0)
 	{
+		ft_putnbr(newline);
+		ft_putendl("");
+		ft_putnbr(i);
+		ft_putendl("");
 		ft_putendl("Error: Programmer sucks at math.");
         return (-1);
 	}
     else
-        return ((i - 20) / 21);
+        return (0);
 }
 
 int		check_hash(char *file)
@@ -94,6 +116,7 @@ int		check_hash(char *file)
 		display_error();
 		return (-1);
 	}
+	ft_putendl("Hash checker OK.");
 	return (0);
 }
 
@@ -115,6 +138,7 @@ int		check_dot(char *file)
 		display_error();
 		return (-1);
 	}
+	ft_putendl("Dot checker OK.");
 	return (0);
 }
 
@@ -136,6 +160,7 @@ int		check_newlines(char *file)
 		display_error();
 		return (-1);
 	}
+	ft_putendl("Newline checker OK.");
 	return (0);
 }
 
@@ -146,9 +171,9 @@ int		check_tetrominos(char *file)
 	int	total;
 	int tetros;
 
-	if ((tetros = check_file(file)) <= 0)
+	if ((tetros = check_file(file)) < 0)
 	{
-		ft_putendl("Check_file function non-functional; least function of them all.");
+		ft_putendl("Check_file function non-functional.");
 		display_error();
 		return (-1);
 	}
