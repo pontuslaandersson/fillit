@@ -6,7 +6,7 @@
 /*   By: panderss <panderss@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/20 13:22:15 by panderss          #+#    #+#             */
-/*   Updated: 2019/12/27 18:26:48 by panderss         ###   ########.fr       */
+/*   Updated: 2019/12/27 19:28:54 by amchakra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,35 +40,6 @@ int		check_shape(char *file, int c)
 	return (0);
 }
 
-/*int		is_valid_shape(char *file)
-{
-	int		c;
-	int		hash;
-
-	c = 0;
-	hash = 0;
-	while (file[c] != '\0')
-	{
-		if (file[c] == '#')
-		{
-			if (hash == 0)
-			{
-				ft_putstr("Entering shape validation at c: ");
-				ft_putnbr(c);
-				ft_putendl("");
-				ft_putendl("* Checking shape.");
-				check_shape(file, c);
-			}
-			hash++;
-			if (hash == 4)
-				hash = 0;
-		}
-		++c;
-	}
-	ft_putendl("Is_valid checker OK.");
-	return (0);
-}*/
-
 int		is_valid_shape(char *file)
 {
 	int		c;
@@ -94,9 +65,14 @@ int		is_valid_shape(char *file)
 			}
 			newline = 0;
 		}
-
 	}
-	ft_putendl("Is_valid checker OK.");
+	ft_putendl("* Checking shape one last!");
+	if (check_shape(file, (c - 20)) != 0)
+	{
+		ft_putendl("Invalid shape detected on last block!");
+		return (-1);
+	}
+	ft_putendl("Is_valid checker OK. We're in good *shape*!");
 	return (0);
 }
 
