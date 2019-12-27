@@ -6,7 +6,7 @@
 /*   By: panderss <panderss@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/20 13:22:15 by panderss          #+#    #+#             */
-/*   Updated: 2019/12/27 15:17:19 by panderss         ###   ########.fr       */
+/*   Updated: 2019/12/27 15:28:52 by panderss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,11 +61,17 @@ int     check_file(char *file)
       if (file[i] == '\n')
             ++newline;
         if (file[i] != '\n' && file[i] != '.' && file[i] != '#')
-            return (-1);
+		{
+         	ft_putendl("Character error.");
+		 	return (-1);
+		}
         ++i;
     }
     if ((newline - 4) % 5 != 0 || (i - 20) % 21 != 0)
+	{
+		ft_putendl("Error: Programmer sucks at math.");
         return (-1);
+	}
     else
         return ((i - 20) / 21);
 }
@@ -142,6 +148,7 @@ int		check_tetrominos(char *file)
 
 	if ((tetros = check_file(file)) <= 0)
 	{
+		ft_putendl("Check_file function non-functional; least function of them all.");
 		display_error();
 		return (-1);
 	}
