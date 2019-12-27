@@ -6,68 +6,63 @@
 /*   By: panderss <panderss@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/11 14:45:50 by panderss          #+#    #+#             */
-/*   Updated: 2019/12/20 15:59:24 by panderss         ###   ########.fr       */
+/*   Updated: 2019/12/27 15:30:32 by panderss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 #include "libft.h"
+#include "fillit.h"
 #include <fcntl.h>
 
-/*	ret = read(fd, buf, 21);
-	ft_putstr("Characters read from file: ");
-	ft_putnbr(ret);
-	ft_putendl("");
+int		check_tetrominos(char *file);
+
+char    *get_file(int fd)
+{
+    static char *str;
+	char		buf[BUFF_SIZE + 1];
+	ssize_t		ret;
+	char		*tmp;
+
+    while ((ret = read(fd, buf, BUFF_SIZE)) > 0)
+    {
+		buf[ret] = '\0';
+		if (str == NULL)
+			str = ft_strnew(0);
+		tmp = ft_strjoin(str, buf);
+		ft_strdel(&str);
+		str = tmp;
+	}
 	if (ret < 0)
-		ft_putendl("Read failed");
-	tetro = ft_strdup(buf);
-	ft_putendl("Map read: ");
-	ft_putstr(tetro);
-	if (check_tetromino(tetro) != 0)
+		return (NULL);
+	ft_putendl("String read into str:");
+	ft_putstr(str);
+	return (str);
+}
+
+int		read_file(int fd)
+{
+	char		*file;
+	int			tetros_read;
+	
+	file = get_file(fd);
+	if (file == NULL)
 	{
-		ft_putendl("Map element checker failed.");
-		ft_putendl(tetro);
 		display_error();
 		return (-1);
 	}
+	/*tetros_read = 0;*/
+	tetros_read = check_tetrominos(file);
+	if (tetros_read == 0)
+		ft_putendl("File validated by checker!");
 	else
 	{
-		ft_putendl("Valid map element read.");
-		ft_putstr(tetro);
+		ft_putendl("Wah, wah...");
+		display_error();
+		return (-1);
 	}
-	return (0);
-*/
-
-void	display_error(void)
-{
-	ft_putstr("error");
-}
-
-int		check_tetromino(char *tetro);
-
-
-
-int		check_file(char *file);
-
-int		read_file(int fd, char **line)
-{
-	static char	*file;
-	char		*tetro;
-	char		buf[21];
-	ssize_t		ret;
-	int			tetros_read;
-	
-	tetros_read = 0;
-	while (tetros_read < 26 && (ret = read(fd, buf, 21)) >  0)
+	/*while (tetros_read < 26)
 	{
-		ft_putstr("read return: ");
-		ft_putnbr(ret);
-		ft_putendl("");
-		if (ret < 0)
-			ft_putendl("Read failed");
-		tetro = ft_strdup(buf);
-		ft_putendl("Map read: ");
-		ft_putstr(tetro);
 		if (check_tetromino(tetro) != 0)
 		{
 			ft_putendl("Map element checker failed.");
@@ -86,7 +81,7 @@ int		read_file(int fd, char **line)
 	{
 		display_error();
 		ft_putstr("\nRead return not 0; more than 26 tetros in file.");
-	}
+	}*/
 	return (0);
 }	
 
@@ -108,7 +103,7 @@ int		main(int argc, char **argv)
 			display_error();
 			return (-1);
 		}
-		ret = read_file(fd, &line);
+		ret = read_file(fd);
 	}
 	return (0);
 }

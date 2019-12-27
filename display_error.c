@@ -6,9 +6,11 @@
 /*   By: panderss <panderss@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/23 14:39:29 by panderss          #+#    #+#             */
-/*   Updated: 2019/12/23 15:29:20 by panderss         ###   ########.fr       */
+/*   Updated: 2019/12/27 14:05:47 by panderss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "libft.h"
 
 void	display_error(void)
 {
