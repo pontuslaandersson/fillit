@@ -10,7 +10,7 @@ typedef	struct		s_piece
 	int			y;
 	char		letter;
 	struct s_piece	*next;
-}					t_list;
+}					t_piece;
 
 void	display_error(void);
 
