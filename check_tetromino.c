@@ -6,7 +6,7 @@
 /*   By: panderss <panderss@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/20 13:22:15 by panderss          #+#    #+#             */
-/*   Updated: 2019/12/27 17:49:58 by panderss         ###   ########.fr       */
+/*   Updated: 2019/12/27 17:58:14 by panderss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,9 @@ int		is_valid_shape(char *file)
 		{
 			if (hash == 0)
 			{
+				ft_putstr("Entering shape validation at c: ");
 				ft_putnbr(c);
+				ft_putendl("");
 				ft_putendl("* Checking shape.");
 				check_shape(file, c);
 			}
