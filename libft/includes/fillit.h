@@ -6,8 +6,8 @@
 
 typedef	struct		s_piece
 {
-	int			x;
-	int			y;
+	int			*x;
+	int			*y;
 	char		letter;
 	struct s_piece	*next;
 }					t_piece;
