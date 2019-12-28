@@ -5,6 +5,8 @@
 
 int		check_tetrominos(char *file);
 
+int		get_tetro(char fd);
+
 char    *get_file(int fd)
 {
     static char *str;
@@ -28,9 +30,9 @@ char    *get_file(int fd)
 	return (str);
 }
 
-int		read_file(int fd)
+int		read_file(char *file, int fd)
 {
-	static char		*file;
+	/*char		*file;*/
 	int				tetros_read;
 
 	file = get_file(fd);
@@ -53,6 +55,7 @@ int		read_file(int fd)
 
 int		main(int argc, char **argv)
 {
+	char 		*file;
 	int			ret;
 	int			fd;
 
@@ -67,15 +70,16 @@ int		main(int argc, char **argv)
 		{
 			display_error();
 			return (-1);
+	}*/
 		}
-		if (!((ret = read_file(fd)) == 0))
+		if (!((ret = read_file(file, fd)) == 0))
 		{
 			display_error();
-			return (-1)
+			return (-1);
 		}
 		else
 		{
-			ret = store_tetro(file);
+			ret = get_tetro(fd, argv);
 		}
 		
 	}

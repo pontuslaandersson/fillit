@@ -6,7 +6,7 @@
 /*   By: panderss <panderss@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/11 14:45:50 by panderss          #+#    #+#             */
-/*   Updated: 2019/12/27 16:00:48 by panderss         ###   ########.fr       */
+/*   Updated: 2019/12/28 18:05:49 by panderss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 #include "libft.h"
 #include "fillit.h"
 #include <fcntl.h>
+
+int		store_tetro(char *file);
 
 int		check_tetrominos(char *file);
 
@@ -43,7 +45,7 @@ char    *get_file(int fd)
 int		read_file(int fd)
 {
 	char		*file;
-	int			tetros_read;
+	int			ret;
 	
 	file = get_file(fd);
 	if (file == NULL)
@@ -52,8 +54,8 @@ int		read_file(int fd)
 		return (-1);
 	}
 	/*tetros_read = 0;*/
-	tetros_read = check_tetrominos(file);
-	if (tetros_read == 0)
+	ret = check_tetrominos(file);
+	if (ret == 0)
 		ft_putendl("File validated by checker!");
 	else
 	{
@@ -61,6 +63,7 @@ int		read_file(int fd)
 		display_error();
 		return (-1);
 	}
+	ret = store_tetro(file);
 	/*while (tetros_read < 26)
 	{
 		if (check_tetromino(tetro) != 0)
