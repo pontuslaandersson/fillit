@@ -6,7 +6,7 @@
 /*   By: panderss <panderss@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/11 14:45:50 by panderss          #+#    #+#             */
-/*   Updated: 2019/12/28 18:05:49 by panderss         ###   ########.fr       */
+/*   Updated: 2020/01/02 15:40:08 by panderss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,32 +59,13 @@ int		read_file(int fd)
 		ft_putendl("File validated by checker!");
 	else
 	{
-		ft_putendl("Wah, wah...");
+		ft_putendl("Invalid file; exiting. Wah, wah...");
 		display_error();
 		return (-1);
 	}
 	ret = store_tetro(file);
-	/*while (tetros_read < 26)
-	{
-		if (check_tetromino(tetro) != 0)
-		{
-			ft_putendl("Map element checker failed.");
-			ft_putendl(tetro);
-			display_error();
-			return (-1);
-		}
-		else
-		{
-			ft_putendl("Valid map element read.");
-			ft_putstr(tetro);
-		}
-		++tetros_read;
-	}
-	if (ret != 0)
-	{
-		display_error();
-		ft_putstr("\nRead return not 0; more than 26 tetros in file.");
-	}*/
+/*	while (1)
+		ft_putendl("Loops and leaks...");*/
 	return (0);
 }	
 

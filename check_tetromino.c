@@ -6,7 +6,7 @@
 /*   By: panderss <panderss@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/20 13:22:15 by panderss          #+#    #+#             */
-/*   Updated: 2019/12/27 19:28:54 by amchakra         ###   ########.fr       */
+/*   Updated: 2020/01/02 13:07:12 by panderss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ int		is_valid_shape(char *file)
 		++c;
 		if (newline == 5)
 		{
-			ft_putstr("Entering shape validation at c: ");
+			ft_putstr("Entering shape validation at c index: ");
 			ft_putnbr(c);
 			ft_putendl("");
 			ft_putendl("* Checking shape.");
@@ -66,7 +66,7 @@ int		is_valid_shape(char *file)
 			newline = 0;
 		}
 	}
-	ft_putendl("* Checking shape one last!");
+	ft_putendl("* Checking shape one last time!");
 	if (check_shape(file, (c - 20)) != 0)
 	{
 		ft_putendl("Invalid shape detected on last block!");
@@ -189,8 +189,6 @@ int		check_tetrominos(char *file)
 	if (check_hash(file) != 0 || check_dot(file) != 0 || check_newlines(file) != 0 
 			|| is_valid_shape(file) != 0)
 	{
-		ft_putendl("Validation failed!");
-		display_error();
 		return (-1);
 	}
 	return (0);
