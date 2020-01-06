@@ -59,6 +59,7 @@ t_piece		*create_list(int *x, int *y)
 			return (NULL);
 		}*/	
 	}
+	new->prev = NULL;
 	new->next = NULL;
 	return (new);
 }

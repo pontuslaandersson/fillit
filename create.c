@@ -4,7 +4,7 @@
 t_piece     *create(int *x, int *y, t_piece* next)
 {
     int len;
-    
+
     t_piece     *new_node = (t_piece*)malloc(sizeof(t_piece));
     if(new_node == NULL)
     {

@@ -24,6 +24,7 @@ t_piece		*add_piece(t_piece *ret, int *x, int *y)
  
     /* create a new node */
     t_piece	*new_node =  create(x, y, NULL);
+	new_node->prev = cursor;
     cursor->next = new_node;
  
     return (ret);
