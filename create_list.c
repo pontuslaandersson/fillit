@@ -20,7 +20,10 @@ t_piece		*create_list(int *x, int *y)
 
 	new = (t_piece*)ft_memalloc(sizeof(t_piece));
 	if (new == NULL)
+	{
+		ft_putendl("Error creating node.");
 		return (NULL);
+	}
 	/*if (content == NULL)
 	{
 		new->content = NULL;

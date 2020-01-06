@@ -1,5 +1,3 @@
 #fillit
 
-Use quickcomp.sh to compile test (a.out). It can currently read and print a tetrimino.
-
-Tetriminos are read into a 2D array. The next step is to validate said array.
+#Use quickcomp.sh to compile test (a.out). It can currently read, print, validate file format, validate shape, convert a single tetro to a 2D array, and store the coordinates of one such array.

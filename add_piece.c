@@ -13,7 +13,23 @@
 #include "libft.h"
 #include "fillit.h"
 
-void	add_piece(t_piece **alst, t_piece *new)
+t_piece     *create(int *x, int *y, t_piece* next);
+
+t_piece		*add_piece(t_piece *ret, int *x, int *y)
+{
+    /* go to the last node */
+    t_piece *cursor = ret;
+    while(cursor->next != NULL)
+        cursor = cursor->next;
+ 
+    /* create a new node */
+    t_piece	*new_node =  create(x, y, NULL);
+    cursor->next = new_node;
+ 
+    return (ret);
+}
+
+/*void	add_piece(t_piece **alst, t_piece *new)
 {
 	if (alst != NULL && new != NULL)
 	{
@@ -21,4 +37,4 @@ void	add_piece(t_piece **alst, t_piece *new)
 		new->next = *alst;
 		*alst = new;
 	}
-}
+}*/
