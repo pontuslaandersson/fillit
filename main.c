@@ -6,14 +6,14 @@
 /*   By: panderss <panderss@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/11 14:45:50 by panderss          #+#    #+#             */
-/*   Updated: 2020/01/07 17:57:20 by panderss         ###   ########.fr       */
+/*   Updated: 2020/01/07 22:30:45 by panderss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 #include <fcntl.h>
 
-t_piece		*store_tetro(char *file);
+t_piece		*store_tetro(char *file, int newlines);
 
 int		check_tetrominos(char *file);
 
@@ -49,9 +49,9 @@ char    *get_file(int fd)
 
 int		read_file(int fd)
 {
-	char		*file;
+	static char		*file;
 	int			ret;
-	t_piece		*start;
+	t_piece		*head;
 	
 	file = get_file(fd);
 	if (file == NULL)
@@ -61,7 +61,7 @@ int		read_file(int fd)
 	}
 	/*tetros_read = 0;*/
 	ret = check_tetrominos(file);
-	if (ret == 0)
+	if (ret != -1)
 		ft_putendl("File validated by checker!");
 	else
 	{
@@ -69,9 +69,9 @@ int		read_file(int fd)
 		display_error();
 		return (-1);
 	}
-	start = store_tetro(file);
+	head = store_tetro(file, ret);
 	ft_putendl("Printing coordinates of starting tetro as returned by store_tetro:");
-	print_list(start);
+	traverse(head);
 /*	while (1)
 		ft_putendl("Loops and leaks...");*/
 	return (0);
@@ -81,7 +81,6 @@ int		read_file(int fd)
 
 int		main(int argc, char **argv)
 {
-	char		*line;
 	int			ret;
 	int			fd;
 

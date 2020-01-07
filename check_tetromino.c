@@ -6,7 +6,7 @@
 /*   By: panderss <panderss@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/20 13:22:15 by panderss          #+#    #+#             */
-/*   Updated: 2020/01/07 16:06:36 by panderss         ###   ########.fr       */
+/*   Updated: 2020/01/07 20:54:48 by panderss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -170,7 +170,7 @@ int		check_newlines(char *file)
 		return (-1);
 	}
 	ft_putendl("Newline checker OK.");
-	return (0);
+	return (newline);
 }
 
 /* Checks hashes, dots, newlines, shapes of entire file. */
@@ -188,10 +188,10 @@ int		check_tetrominos(char *file)
 		display_error();
 		return (-1);
 	}
-	if (check_hash(file) != 0 || check_dot(file) != 0 || check_newlines(file) != 0 
-			|| is_valid_shape(file) != 0)
+	if (check_hash(file) != 0 || check_dot(file) != 0 || 
+			(total = check_newlines(file)) < 0 || is_valid_shape(file) != 0)
 	{
 		return (-1);
 	}
-	return (0);
+	return (total);
 }

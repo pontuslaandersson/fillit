@@ -1,21 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   store_tetro.c                                      :+:      :+:    :+:   */
+/*   etore_tetro.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: panderss <panderss@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/28 13:59:19 by panderss          #+#    #+#             */
-/*   Updated: 2020/01/07 17:49:54 by panderss         ###   ########.fr       */
+/*   Updated: 2020/01/07 22:30:43 by panderss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
+t_piece		*get_head(char *file);
+
+t_piece		*add_link(t_piece *start, char **grid);
+
 t_piece	*start_list(int *x, int *y)
 {
 	t_piece *start;
 
+	ft_putendl("Starting list.");
 	start = create_list(x, y);
 	return (start);
 }
@@ -118,41 +123,49 @@ int		new_line(char *file, char **grid, int lines_read)
 
 /* Reads from file into 2D array, calls find_coords to store them in linked list. */
 
-t_piece		*store_tetro(char *file)
+t_piece		*store_tetro(char *file, int newlines)
 {
 	static char	*grid[4];
 	int			ret;
 	int			lines_read;
 	t_piece		*start;
 
+	start = get_head(file);
+	file = ft_strsub(file, 42, ft_strlen(file));
+	newlines = newlines - 5;
 	lines_read = 0;
-	while (lines_read < 4)
+	while (newlines > 0)
 	{
-		if (!(grid[lines_read] = ft_strnew(5)))
+		while (lines_read < 4)
 		{
-			display_error();
-			exit (-1);
+			if (!(grid[lines_read] = ft_strnew(5)))
+			{
+				display_error();
+				exit (-1);
+			}
+			lines_read++;
 		}
-		lines_read++;
+		ft_putendl("Transforming into 2d array...");
+		lines_read = 0;
+		while (lines_read < 4)
+		{
+			ret = new_line(file, grid, lines_read);
+			ft_putendl("Increasing lines_read...");
+			lines_read++;
+		}
+		ft_putnbr(ret);
+		ft_putstr("First line of array: ");
+		ft_putendl(grid[0]);/* Lines to display what we have read from the string.*/
+		ft_putstr("Second line of array: ");
+		ft_putendl(grid[1]);
+		ft_putstr("Third line of array: ");
+		ft_putendl(grid[2]);
+		ft_putstr("Fourth line of array: ");
+		ft_putendl(grid[3]);
+		add_link(start, grid);
+		file = ft_strsub(file, 21, ft_strlen(file));
+		newlines = newlines - 5;
 	}
-	ft_putendl("Transforming into 2d array...");
-	lines_read = 0;
-	while (lines_read < 4)
-	{
-		ret = new_line(file, grid, lines_read);
-		ft_putendl("Increasing lines_read...");
-		lines_read++;
-	}
-	ft_putnbr(ret);
-	ft_putstr("First line of array: ");
-	ft_putendl(grid[0]);/* Lines to display what we have read from the string.*/
-	ft_putstr("Second line of array: ");
-	ft_putendl(grid[1]);
-	ft_putstr("Third line of array: ");
-	ft_putendl(grid[2]);
-	ft_putstr("Fourth line of array: ");
-	ft_putendl(grid[3]);
-	start = find_coords(grid);
 	/*if (ret == -1)
 	{
 		ft_putendl("Oops, I did it again...");

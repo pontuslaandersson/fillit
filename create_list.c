@@ -6,7 +6,7 @@
 /*   By: panderss <panderss@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/04 12:19:05 by panderss          #+#    #+#             */
-/*   Updated: 2020/01/04 14:48:36 by panderss         ###   ########.fr       */
+/*   Updated: 2020/01/07 21:18:42 by panderss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,40 +24,20 @@ t_piece		*create_list(int *x, int *y)
 		ft_putendl("Error creating node.");
 		return (NULL);
 	}
-	/*if (content == NULL)
-	{
-		new->content = NULL;
-	}*/
 	else
 	{
-		/*new->x = (int*)malloc(sizeof(size_t));*/
-		/*if (new->x == NULL)
-		{
-			free(new);
-			return (NULL);
-		}*/
-		len = 0;
+			len = 0;
 		while (len < 3)
 		{
 			new->x[len] = x[len];
 			++len;
 		}
-        /*new->y = (int*)malloc(sizeof(size_t));*/
-	/*	if (new->x == NULL)
-		{
-			free(new);
-			return (NULL);
-		}*/
-		len = 0;
+    		len = 0;
 		while (len < 3)
 		{
 			new->y[len] = y[len];
 			++len;
-		}		/*	if (new->y == NULL)
-		{
-			free(new);
-			return (NULL);
-		}*/	
+		}
 	}
 	new->prev = NULL;
 	new->next = NULL;

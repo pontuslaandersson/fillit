@@ -1,27 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   add_piece.c                                        :+:      :+:    :+:   */
+/*   find_coords.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: panderss <panderss@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/01/04 16:24:44 by panderss          #+#    #+#             */
-/*   Updated: 2020/01/07 21:34:50 by panderss         ###   ########.fr       */
+/*   Created: 2020/01/07 22:09:05 by panderss          #+#    #+#             */
+/*   Updated: 2020/01/07 22:09:07 by panderss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fillit.h"
+/* Finds hashes, saves their coords by calling save_choords. */
 
-t_piece		*add_piece(t_piece *ret, int *x, int *y)
+t_piece		*find_coords(char **grid)
 {
-    /* go to the last node */
-    t_piece *cursor = ret;
-    while(cursor->next != NULL)
-        cursor = cursor->next;
- 
-    /* create a new node */
-    t_piece	*new_node =  create(x, y, cursor, NULL);
-    cursor->next = new_node;
- 
-    return (ret);
+	int i;
+	int j;
+
+	j = 0;
+	while (j < 4)
+	{
+		i = 0;
+		while (grid[j][i] != '\0')
+		{
+			if (grid[j][i] == '#')
+				return (save_coords(grid, j, i));
+			++i;
+		}
+		++j;
+	}
+	display_error();
+	exit(-1);
 }
