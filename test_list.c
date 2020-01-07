@@ -7,18 +7,23 @@ t_piece		*create_list(int *x, int *y);
 
 void		print_list(t_piece *cursor)
 {
-	ft_putnbr(cursor->x[0]);
-	ft_putendl("");
-	ft_putnbr(cursor->x[1]);
-	ft_putendl("");
-	ft_putnbr(cursor->x[2]);
-	ft_putendl("");
-	ft_putnbr(cursor->y[0]);
-	ft_putendl("");
-	ft_putnbr(cursor->y[1]);
-	ft_putendl("");
-	ft_putnbr(cursor->y[2]);
-	ft_putendl("");
+	if (cursor == NULL)
+		ft_putendl("Error: Cursor is NULL.");
+	else
+	{
+		ft_putnbr(cursor->x[0]);
+		ft_putendl("");
+		ft_putnbr(cursor->x[1]);
+		ft_putendl("");
+		ft_putnbr(cursor->x[2]);
+		ft_putendl("");
+		ft_putnbr(cursor->y[0]);
+		ft_putendl("");
+		ft_putnbr(cursor->y[1]);
+		ft_putendl("");
+		ft_putnbr(cursor->y[2]);
+		ft_putendl("");
+	}
 }
 
 void traverse(t_piece* head)
@@ -35,19 +40,26 @@ void traverse(t_piece* head)
 void traverse_rev(t_piece* head)
 {
 	t_piece	*cursor = head;
-    while(cursor != NULL)
+	ft_putendl("* Going to end of list to test reverse print...");
+    while(cursor->next != NULL)
     {
-		ft_putendl("* Going to end of list to test reverse print...");
+		ft_putendl("** Moving cursor...");
         cursor = cursor->next;
     }
-    while(cursor != head)
+	ft_putendl("* End of list reached; preparing to reverse.");
+    /*ft_putendl("** Moving cursor backwards one step.");
+	cursor = cursor->prev;
+	ft_putendl("* Printing a set of coordinates...");
+    print_list(cursor);*/
+	while(cursor != NULL)
     {
-		cursor = cursor->prev;
 		ft_putendl("* Printing a set of coordinates...");
         print_list(cursor);
+		ft_putendl("** Moving cursor backwards.");
+		cursor = cursor->prev;
     }
-	/*ft_putendl("Printing head");
-	print_list(cursor);*/
+	if (cursor == NULL)
+		ft_putendl("Cursor reached NULL pointer signifying beginning of list read in reverse. Sucessfully accessed list in reverse!");
 }
 
 int			main(void)
@@ -56,7 +68,6 @@ int			main(void)
 	int			y[3];
 	t_piece		*ret;
 	t_piece		*new;
-	t_piece		*next_piece;
 
 	x[0] = 1;
 	x[1] = 2;
@@ -94,24 +105,11 @@ int			main(void)
 	add_piece(ret, x, y);
 	/*ft_putendl("Navigating to new node.");
 	ret = ret->next;*/
-	/*ft_putendl("Coordinates stored in new node:");
-	ft_putnbr(new->x[0]);
-	ft_putendl("");
-	ft_putnbr(new->x[1]);
-	ft_putendl("");
-	ft_putnbr(new->x[2]);
-	ft_putendl("");
-	ft_putnbr(new->y[0]);
-	ft_putendl("");
-	ft_putnbr(new->y[1]);
-	ft_putendl("");
-	ft_putnbr(new->y[2]);
-	ft_putendl("");*/
 	ft_putendl("Attempting to traverse and print values stored in linked list.");
 	traverse(ret);
-	/*ft_putendl("Attempting to traverse in reverse and print values.");
-	traverse_rev(ret);*/
-	ft_putendl("Coordinates stored in ret node, again:");
+	ft_putendl("Attempting to traverse in reverse and print values.");
+	traverse_rev(ret);
+	/*ft_putendl("Coordinates stored in ret node, again:");
 	ft_putnbr(ret->x[0]);
 	ft_putendl("");
 	ft_putnbr(ret->x[1]);
@@ -123,26 +121,6 @@ int			main(void)
 	ft_putnbr(ret->y[1]);
 	ft_putendl("");
 	ft_putnbr(ret->y[2]);
-	ft_putendl("");
-	/*while (new)
-		{
-			next_piece = new->next;
-			ft_putnbr(next_piece->x[0]);
-		ft_putendl("");
-		ft_putnbr(next_piece->x[1]);
-		ft_putendl("");
-		ft_putnbr(next_piece->x[2]);
-		ft_putendl("");
-		ft_putnbr(next_piece->y[0]);
-		ft_putendl("");
-		ft_putnbr(next_piece->y[1]);
-		ft_putendl("");
-		ft_putnbr(next_piece->y[2]);
-		new = next_piece;
-		}*/
-	/*while (1)
-	{
-
-	}*/
+	ft_putendl("");*/
 	return (0);
 }
