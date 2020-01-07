@@ -6,14 +6,21 @@
 /*   By: panderss <panderss@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/28 13:59:19 by panderss          #+#    #+#             */
-/*   Updated: 2020/01/02 15:45:30 by panderss         ###   ########.fr       */
+/*   Updated: 2020/01/07 17:49:54 by panderss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
 #include "fillit.h"
 
-int		save_coords(char **grid, int j, int i)
+t_piece	*start_list(int *x, int *y)
+{
+	t_piece *start;
+
+	start = create_list(x, y);
+	return (start);
+}
+
+t_piece		*save_coords(char **grid, int j, int i)
 {
 	int count;
 	int start_x;
@@ -40,21 +47,28 @@ int		save_coords(char **grid, int j, int i)
 		i = 0;
 		++j;
 	}
+	ft_putendl("First block assumed to be at x = 0, y = 0.");
+	ft_putstr("Relative coordinates of second block: ");
 	ft_putnbr(x[0]);
 	ft_putstr(", ");
 	ft_putnbr(y[0]);
 	ft_putendl("");
+	ft_putstr("Relative coordinates of third block: ");
 	ft_putnbr(x[1]);
 	ft_putstr(", ");
 	ft_putnbr(y[1]);
 	ft_putendl("");
+	ft_putstr("Relative coordinates of second block: ");
 	ft_putnbr(x[2]);
 	ft_putstr(", ");
 	ft_putnbr(y[2]);
-	return (0);
+	ft_putendl("Saving coordinates in struct...");
+	return (start_list(x, y));
 }
 
-int		find_coords(char **grid)
+/* Finds hashes, saves their coords by calling save_choords. */
+
+t_piece		*find_coords(char **grid)
 {
 	int i;
 	int j;
@@ -71,8 +85,11 @@ int		find_coords(char **grid)
 		}
 		++j;
 	}
-	return (-1);
+	display_error();
+	exit(-1);
 }
+
+/* Gets each line of the 2D array. */
 
 int		new_line(char *file, char **grid, int lines_read)
 {
@@ -86,37 +103,39 @@ int		new_line(char *file, char **grid, int lines_read)
 	{
 		grid[lines_read] = ft_strsub(file, (lines_read * 5), len);
 		tmp = ft_strdup(file + len + 1);
-//		ft_strdel(&file);
 		file = tmp;
 	}
-	else if (file[len] == '\0')
+	if ((file[len]) == '\0')
+		return (0);
+	/*else if (file[len] == '\0')
 	{
 		grid[lines_read] = ft_strdup(file);
 		ft_strdel(&file);
 		return (0);
-	}
+	}*/
 	return (1);
 }
 
-int		store_tetro(char *file)
+/* Reads from file into 2D array, calls find_coords to store them in linked list. */
+
+t_piece		*store_tetro(char *file)
 {
 	static char	*grid[4];
-	char		*line;
 	int			ret;
 	int			lines_read;
+	t_piece		*start;
 
-	/*Malloc for 2d array.*/
 	lines_read = 0;
 	while (lines_read < 4)
 	{
 		if (!(grid[lines_read] = ft_strnew(5)))
 		{
 			display_error();
-			return (-1);
+			exit (-1);
 		}
 		lines_read++;
 	}
-	ft_putendl("Transforming to 2d array...");
+	ft_putendl("Transforming into 2d array...");
 	lines_read = 0;
 	while (lines_read < 4)
 	{
@@ -133,12 +152,12 @@ int		store_tetro(char *file)
 	ft_putendl(grid[2]);
 	ft_putstr("Fourth line of array: ");
 	ft_putendl(grid[3]);
-	ret = find_coords(grid);
-	if (ret == -1)
+	start = find_coords(grid);
+	/*if (ret == -1)
 	{
 		ft_putendl("Oops, I did it again...");
 		display_error();
 		return (-1);
-	}
-	return (0);
+	}*/
+	return (start);
 }

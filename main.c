@@ -6,18 +6,20 @@
 /*   By: panderss <panderss@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/11 14:45:50 by panderss          #+#    #+#             */
-/*   Updated: 2020/01/02 15:40:08 by panderss         ###   ########.fr       */
+/*   Updated: 2020/01/07 17:57:20 by panderss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
-#include "libft.h"
 #include "fillit.h"
 #include <fcntl.h>
 
-int		store_tetro(char *file);
+t_piece		*store_tetro(char *file);
 
 int		check_tetrominos(char *file);
+
+/* Reads the file into a buffer, and which it joins to previously read */
+/* material. It keeps going until it has read the whole file into a string, */
+/* which it then returns. */
 
 char    *get_file(int fd)
 {
@@ -42,10 +44,14 @@ char    *get_file(int fd)
 	return (str);
 }
 
+/* Where the action happens. Calls get_file, calls check_tetrominos, */
+/* calls store_tetro. */
+
 int		read_file(int fd)
 {
 	char		*file;
 	int			ret;
+	t_piece		*start;
 	
 	file = get_file(fd);
 	if (file == NULL)
@@ -63,11 +69,15 @@ int		read_file(int fd)
 		display_error();
 		return (-1);
 	}
-	ret = store_tetro(file);
+	start = store_tetro(file);
+	ft_putendl("Printing coordinates of starting tetro as returned by store_tetro:");
+	print_list(start);
 /*	while (1)
 		ft_putendl("Loops and leaks...");*/
 	return (0);
-}	
+}
+
+/* Main opens file and goes to read_file.*/
 
 int		main(int argc, char **argv)
 {
@@ -88,6 +98,11 @@ int		main(int argc, char **argv)
 			return (-1);
 		}
 		ret = read_file(fd);
+		if (ret == -1)
+		{
+			display_error();
+			return (-1);
+		}
 	}
 	return (0);
 }

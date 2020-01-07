@@ -6,7 +6,7 @@
 /*   By: panderss <panderss@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/20 13:22:15 by panderss          #+#    #+#             */
-/*   Updated: 2020/01/02 13:07:12 by panderss         ###   ########.fr       */
+/*   Updated: 2020/01/07 16:06:36 by panderss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -172,6 +172,8 @@ int		check_newlines(char *file)
 	ft_putendl("Newline checker OK.");
 	return (0);
 }
+
+/* Checks hashes, dots, newlines, shapes of entire file. */
 
 int		check_tetrominos(char *file)
 {
