@@ -28,8 +28,8 @@ int		new_line(char *file, char **grid, int lines_read)
 		tmp = ft_strdup(file + len + 1);
 		file = tmp;
 	}
-	if ((file[len]) == '\0')
-		return (0);
+	/*if ((file[len]) == '\0')
+		return (0);*/
 	/*else if (file[len] == '\0')
 	{
 		grid[lines_read] = ft_strdup(file);

@@ -96,7 +96,7 @@ t_piece		*find_coords(char **grid)
 
 /* Gets each line of the 2D array. */
 
-int		new_line(char *file, char **grid, int lines_read)
+/*int		new_line(char *file, char **grid, int lines_read)
 {
 	char	*tmp;
 	int		len;
@@ -112,14 +112,8 @@ int		new_line(char *file, char **grid, int lines_read)
 	}
 	if ((file[len]) == '\0')
 		return (0);
-	/*else if (file[len] == '\0')
-	{
-		grid[lines_read] = ft_strdup(file);
-		ft_strdel(&file);
-		return (0);
-	}*/
 	return (1);
-}
+}*/
 
 /* Reads from file into 2D array, calls find_coords to store them in linked list. */
 
@@ -131,7 +125,7 @@ t_piece		*store_tetro(char *file, int newlines)
 	t_piece		*start;
 
 	start = get_head(file);
-	file = ft_strsub(file, 42, ft_strlen(file));
+	file = ft_strsub(file, 21, ft_strlen(file));
 	newlines = newlines - 5;
 	lines_read = 0;
 	while (newlines > 0)

@@ -72,6 +72,8 @@ int		read_file(int fd)
 	head = store_tetro(file, ret);
 	ft_putendl("Printing coordinates of starting tetro as returned by store_tetro:");
 	traverse(head);
+	ft_putendl("And now in reverse!");
+	traverse_rev(head);
 /*	while (1)
 		ft_putendl("Loops and leaks...");*/
 	return (0);
