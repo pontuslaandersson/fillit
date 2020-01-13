@@ -31,7 +31,7 @@ void	initialize_map(int newlines) /* Should actually return char **. */
 		map_size = 10;
 	if (n == 26)
 		map_size = 11;
-	map = create_map(n);
+	map = create_map(map_size);
 	/*if (!(map[] = ft_strnew(5)))
 			{
 				display_error();
@@ -41,12 +41,19 @@ void	initialize_map(int newlines) /* Should actually return char **. */
 
 int		main(void)
 {
-	initialize_map(4);
-	/*initialize_map(9);
+	/*initialize_map(4);
+	ft_putendl("");*/
+	initialize_map(9);
+	ft_putendl("");/*
 	initialize_map(14);
+	ft_putendl("");
 	initialize_map(19);
+	ft_putendl("");
 	initialize_map(24);
+	ft_putendl("");
 	initialize_map(29);
+	ft_putendl("");
 	initialize_map(34);
+	ft_putendl("");
 	initialize_map(39);*/
 }
