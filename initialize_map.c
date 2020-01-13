@@ -2,7 +2,7 @@
 
 char	**create_map(int n);
 
-void	initialize_map(int newlines) /* Should actually return char **. */
+char	**initialize_map(int newlines)
 {
 	char	**map;
 	int		n;
@@ -37,13 +37,16 @@ void	initialize_map(int newlines) /* Should actually return char **. */
 				display_error();
 				exit (-1);
 			}*/
+			return (map);
 }
 
 int		main(void)
 {
+	char	**test_map;
+	
 	/*initialize_map(4);
 	ft_putendl("");*/
-	initialize_map(9);
+	test_map = initialize_map(9);
 	ft_putendl("");/*
 	initialize_map(14);
 	ft_putendl("");
