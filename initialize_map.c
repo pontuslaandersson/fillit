@@ -44,19 +44,28 @@ int		main(void)
 {
 	char	**test_map;
 	
-	/*initialize_map(4);
-	ft_putendl("");*/
+	ft_putendl("Map size 1: 2");
+	test_map = initialize_map(4);
+	ft_putendl("");
+	ft_putendl("Map size 2: 3");
 	test_map = initialize_map(9);
-	ft_putendl("");/*
+	ft_putendl("");
+	ft_putendl("Map size 3: 4");
 	initialize_map(14);
 	ft_putendl("");
+	ft_putendl("Map size 4: 4");
 	initialize_map(19);
 	ft_putendl("");
+	ft_putendl("Map size 5: 5");
 	initialize_map(24);
 	ft_putendl("");
+	ft_putendl("Map size 6: 5");
 	initialize_map(29);
 	ft_putendl("");
+	ft_putendl("Map size 7: 6");
 	initialize_map(34);
 	ft_putendl("");
-	initialize_map(39);*/
+	ft_putendl("Map size 8: 6");
+	initialize_map(39);
+	return (0);
 }
