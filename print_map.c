@@ -8,5 +8,6 @@ void	print_map(char **map)
 	while (**map)
 	{
 		ft_putstr(*map[line]);
+		++line;
 	}
 }
