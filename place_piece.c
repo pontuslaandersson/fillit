@@ -18,7 +18,7 @@ int     place_piece(t_piece *head, char **map, int placed)
             while (((head->x[0] + x) < 0 || (head->x[1] + x) < 0 || (head->x[2] + x) < 0) && map[y][x] != '\0'/*there's enough map*/)
             ++x;
         }
-        if (head->x[0] < 0 || head->x[1] < 0 || head->x[2] < 0 || ft_strlen(map[0]) < (head->x[0] || head->x[1] || head->x[2]))
+        if (head->x[0] < 0 || head->x[1] < 0 || head->x[2] < 0 || (ft_strlen(map[0]) - 1) < (head->x[0] || head->x[1] || head->x[2]))
         {
             ft_putendl("We're going to need a bigger map...");
             exit (-1);
@@ -29,7 +29,7 @@ int     place_piece(t_piece *head, char **map, int placed)
         while (x < 3)
         {
             ft_putendl("Placing hash...");
-            if (map[head->y[x]][head->x[x]] = '.')
+            if (map[head->y[x]][head->x[x]] == '.')
                 map[head->y[x]][head->x[x]] = '#';
             ++x;
         }
