@@ -26,11 +26,16 @@ typedef	struct		s_piece
 	struct s_piece	*next;
 }					t_piece;
 
+void		print_map(char **map);
+char		**create_map(int n);
+char		**initialize_map(int newlines);
 int			new_line(char *file, char **grid, int lines_read);
+int     	place_piece(t_piece *head, char **map, int placed);
 void		display_error(void);
 void		traverse(t_piece* head);
 void		traverse_rev(t_piece* head);
 void		print_list(t_piece *cursor);
+void    	solve(t_piece *head, int newlines);
 t_piece		*create_list(int *x, int *y);
 t_piece		*create(int *x, int *y, t_piece *prev, t_piece *next);
 t_piece		*add_piece(t_piece *ret, int *x, int *y);

@@ -1,7 +1,5 @@
 #include "fillit.h"
 
-char	**create_map(int n);
-
 char	**initialize_map(int newlines)
 {
 	char	**map;
@@ -32,10 +30,10 @@ char	**initialize_map(int newlines)
 	if (n == 26)
 		map_size = 11;
 	map = create_map(map_size);
-			return (map);
+	return (map);
 }
 
-int		main(void)
+/*int		main(void)
 {
 	char	**test_map;
 	
@@ -118,4 +116,4 @@ int		main(void)
 	ft_putendl("");
 	ft_putendl("");
 	return (0);
-}
+}*/

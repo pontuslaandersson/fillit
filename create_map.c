@@ -19,12 +19,12 @@ char	**create_map(int n)
 		++y;
 	}
 	y = 0;
-	while (y < n) /* Does not work. */
+	while (y < n)
 	{
 		ft_putendl("* Filling line with dots...");
 		x = 0;
 		map[y] = (char*)malloc((sizeof(char) * n) + 1);
-		while (x < n) /* Does not work. */
+		while (x < n)
 		{
 			map[y][x] = '.';
 			x++;
@@ -39,5 +39,6 @@ char	**create_map(int n)
 		ft_putendl(map[y]);
 		y++;
 	}
+	ft_putendl("Returning map...");
 	return (map);
 }

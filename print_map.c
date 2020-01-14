@@ -5,9 +5,9 @@ void	print_map(char **map)
 	int	line;
 
 	line = 0;
-	while (**map)
+	while (map[line])
 	{
-		ft_putstr(*map[line]);
+		ft_putendl(map[line]);
 		++line;
 	}
 }
