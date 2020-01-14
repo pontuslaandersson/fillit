@@ -8,7 +8,7 @@ char	**create_map(int n)
 
 	map = (char**)malloc(sizeof(char*) * n);
 	y = 0;
-	while (y < n) /* Does not work. */
+	while (y < n)
 	{
 		ft_putendl("Creating line.");
 		if (!(map[y] = ft_strnew(n + 1)))
@@ -33,7 +33,7 @@ char	**create_map(int n)
 	}
 	x = 0;
 	y = 0;
-	while (y < n) /* Does not work. */
+	while (y < n)
 	{
 		ft_putendl("* Printing a line in array...");
 		ft_putendl(map[y]);
