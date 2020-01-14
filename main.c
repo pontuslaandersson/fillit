@@ -6,7 +6,7 @@
 /*   By: panderss <panderss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/11 14:45:50 by panderss          #+#    #+#             */
-/*   Updated: 2020/01/14 16:38:41 by panderss         ###   ########.fr       */
+/*   Updated: 2020/01/14 18:01:18 by panderss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,7 +102,6 @@ int		main(int argc, char **argv)
 		ret = read_file(fd);
 		if (ret == -1)
 		{
-			ft_putendl("Function read_file failed.");
 			display_error();
 			return (-1);
 		}
