@@ -40,6 +40,7 @@ int     place_piece(t_piece *head, char **map, int piece)
     {
         ft_putendl("Attempting to place non-first piece.");
         cursor = traverse_until(head, piece);
+        print_list(cursor);
         while (map[y][x] != '.')
         {
             ft_putendl("Entered while...");
@@ -62,22 +63,14 @@ int     place_piece(t_piece *head, char **map, int piece)
         }
         if (map[y][x] == '.')
         {
-            /*ft_putendl("Found first position of new piece.");
-            if (map[y + (cursor->y[0])][x + (cursor->x[0])] == '.')
+            ft_putendl("Found first position of new piece.");
+            if (map[cursor->y[0]][cursor->x[0]] == '.')
                 ft_putendl("Second one clear!");
             if (map[y + (cursor->y[1])][x + (cursor->x[1])] == '.')
                 ft_putendl("Third one clear!");
             if (map[y + (cursor->y[2])][x + (cursor->x[2])] == '.')
-                ft_putendl("Fourth one clear!");*/
-        while (hash < 3)
-        {
-            ft_putendl("Placing hash...");
-            if (map[cursor->y[hash] + y][cursor->x[hash] + x] == '.')
-                map[cursor->y[hash] + y][cursor->x[hash] + x] = 65 + piece;
-            ++hash;
-        }
-        ft_putendl("Hashes placed...");
-            /*{
+                ft_putendl("Fourth one clear!");
+            {
                 ft_putendl("Candidate positions clear. Attempting to place letter...");
                 map[y][x] = (65 + piece);
                 ft_putendl("First one placed!");
@@ -87,7 +80,7 @@ int     place_piece(t_piece *head, char **map, int piece)
                 ft_putendl("Third placed!");
                 map[y + cursor->y[2]][x + cursor->x[2]] = (65 + piece);
                 ft_putendl("HOME RUN!");
-            }*/
+            }
             /*else
             {
                 ft_putendl("Cannot place piece.");

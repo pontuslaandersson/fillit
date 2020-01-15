@@ -7,7 +7,7 @@ t_piece		*traverse_until(t_piece *head, int piece)
 
 	i = 0;
 	cursor = head;
-    while (cursor != NULL || i < piece)
+    while (cursor->next != NULL || i < piece)
     {
         cursor = cursor->next;
 		++i;
