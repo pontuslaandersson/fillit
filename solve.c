@@ -1,6 +1,6 @@
 #include "fillit.h"
 
-void    solve(t_piece *head, int newlines)
+void    solve(t_piece *head, int newlines, int max)
 {
     static char    **map;
     int            ret;
@@ -9,7 +9,7 @@ void    solve(t_piece *head, int newlines)
     placed = 0;
     map = initialize_map(newlines);
     ft_putendl("Sending to place_piece...");
-    while (placed < ((newlines + 1) / 5))
+    while (placed < max)
     {
         ret = place_piece(head, map, placed);
         if (ret == -1)
@@ -19,7 +19,7 @@ void    solve(t_piece *head, int newlines)
     if (ret == -1)
     {
         /*free map*/
-        solve(head, newlines + 5);
+        solve(head, newlines + 5, max);
     }
     if (ret != -1)
         print_map(map);

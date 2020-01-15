@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fillit.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: panderss <panderss@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: panderss <panderss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/04 13:32:32 by panderss          #+#    #+#             */
-/*   Updated: 2020/01/07 22:12:58 by panderss         ###   ########.fr       */
+/*   Updated: 2020/01/15 15:10:34 by panderss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,10 +35,11 @@ void		display_error(void);
 void		traverse(t_piece* head);
 void		traverse_rev(t_piece* head);
 void		print_list(t_piece *cursor);
-void    	solve(t_piece *head, int newlines);
+void    	solve(t_piece *head, int newlines, int max);
 t_piece		*create_list(int *x, int *y);
 t_piece		*create(int *x, int *y, t_piece *prev, t_piece *next);
 t_piece		*add_piece(t_piece *ret, int *x, int *y);
 t_piece		*find_coords(char **grid);
+t_piece		*traverse_until(t_piece *head, int piece);
 
 #endif
