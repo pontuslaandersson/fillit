@@ -40,7 +40,6 @@ int     place_piece(t_piece *head, char **map, int piece)
     {
         ft_putendl("Attempting to place non-first piece.");
         cursor = traverse_until(head, piece);
-        print_list(cursor);
         while (map[y][x] != '.')
         {
             ft_putendl("Entered while...");
