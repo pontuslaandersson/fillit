@@ -6,7 +6,7 @@
 /*   By: panderss <panderss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/11 14:45:50 by panderss          #+#    #+#             */
-/*   Updated: 2020/01/15 15:10:15 by panderss         ###   ########.fr       */
+/*   Updated: 2020/01/15 19:58:56 by panderss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,6 @@ int		read_file(int fd)
 	else
 	{
 		ft_putendl("Invalid file; exiting. Wah, wah...");
-		display_error();
 		return (-1);
 	}
 	head = store_tetro(file, ret);
