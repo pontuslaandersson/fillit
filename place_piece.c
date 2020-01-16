@@ -38,16 +38,12 @@ int     place_piece(t_piece *head, char **map, int piece)
     /* Now we will want to traverse the list and try to place the next piece. */
     if (piece > 0) 
     {
-        ft_putendl("Attempting to place non-first piece.");
+        ft_putstr("Attempting to place piece ");
+        ft_putchar(65 + piece);
+        ft_putchar('\n');
         cursor = traverse_until(head, piece);
-        while (map[y][x] != '.')
+        while (map[y][x] != '.' && map[y][x] != '\0')
         {
-            ft_putendl("Entered while...");
-            if (map[y][x] >= 'A' && map[y][x] <= 'Y')
-            {
-                ft_putendl("Incrementing x...");
-                ++x;
-            }
             if (map[y][x] == '\0')
             {
                 ft_putendl("Hit null terminator, going to next line.");
@@ -59,8 +55,13 @@ int     place_piece(t_piece *head, char **map, int piece)
                         exit (-1);
                     }
             }
-        }
-        if (map[y][x] == '.')
+            ft_putendl("Entered while...");
+            if (map[y][x] >= 'A' && map[y][x] <= 'Y')
+            {
+                ft_putendl("Incrementing x...");
+                ++x;
+            }
+            if (map[y][x] == '.')
         {
             ft_putendl("Found first position of new piece.");
             if (map[cursor->y[0]][cursor->x[0]] == '.')
@@ -86,9 +87,11 @@ int     place_piece(t_piece *head, char **map, int piece)
                 }
             else
             {
-                ft_putendl("Cannot place piece.");
-                exit (-1);
+                ft_putendl("Cannot place piece at that position, incrementing again.");
+                ++x;
             }
+        }
+        
             
             /*else if ((ft_strlen(map[0]) - 2) < (cursor->x[0] || cursor->x[1] || cursor->x[2]))
             {
