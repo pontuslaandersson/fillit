@@ -28,6 +28,9 @@ void    solve(t_piece *head, int newlines, int max)
     int            placed;
     
     placed = 0;
+    ft_putstr("Max: ");
+    ft_putnbr(max);
+    ft_putendl("");
     map = initialize_map(newlines);
     ft_putendl("Sending to place_piece...");
     while (placed < max)

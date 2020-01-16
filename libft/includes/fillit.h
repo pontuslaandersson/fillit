@@ -6,7 +6,7 @@
 /*   By: panderss <panderss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/04 13:32:32 by panderss          #+#    #+#             */
-/*   Updated: 2020/01/15 15:10:34 by panderss         ###   ########.fr       */
+/*   Updated: 2020/01/16 18:02:52 by panderss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,8 @@ typedef	struct		s_piece
 void		print_map(char **map);
 char		**create_map(int n);
 char		**initialize_map(int newlines);
+int     	check_candidate(t_piece *cursor, char **map, int x, int y, int piece);
+int			find_dot(t_piece *cursor, char **map, int x, int y, int piece);
 int			new_line(char *file, char **grid, int lines_read);
 int     	place_piece(t_piece *head, char **map, int placed);
 void		display_error(void);

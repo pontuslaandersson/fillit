@@ -6,10 +6,12 @@ int     place_piece(t_piece *head, char **map, int piece)
     int         x;
     int         y;
     int         hash;
+    int         j;
 
     y = 0;
     x = 0;
     hash = 0;
+    j = 1;
     if (piece == 0) /*Checking for negative x.*/
     {
         ft_putendl("Checking for negatives...");
@@ -42,63 +44,44 @@ int     place_piece(t_piece *head, char **map, int piece)
         ft_putchar(65 + piece);
         ft_putchar('\n');
         cursor = traverse_until(head, piece);
-        while (map[y][x] != '.' && map[y][x] != '\0')
+        find_dot(cursor, map, x, y, piece);
+       /* while (check_candidate(cursor, map, x, y) != 0)
         {
-            if (map[y][x] == '\0')
-            {
-                ft_putendl("Hit null terminator, going to next line.");
-                x = 0;
-                ++y;
-                if (y > ft_strlen(map[0]))
-                    {
-                        ft_putendl("y over limit; map needs to get bigger.");
-                        exit (-1);
-                    }
-            }
+            y = find_nth_dot_y(map, x, y);
+            x = find_nth_dot_x(map, x, y);*/
+        /*while (map[y][x] != '.' && map[y][x] != '\0' && y < ft_strlen(map[0]))
+        {
             ft_putendl("Entered while...");
-            if (map[y][x] >= 'A' && map[y][x] <= 'Y')
-            {
-                ft_putendl("Incrementing x...");
-                ++x;
-            }
-            if (map[y][x] == '.')
-        {
-            ft_putendl("Found first position of new piece.");
-            if (map[cursor->y[0]][cursor->x[0]] == '.')
+            ++x;
+            if (map[y][x] == '\0')
                 {
-                    ft_putendl("Second one clear!");
-                    if (map[y + (cursor->y[1])][x + (cursor->x[1])] == '.')
-                    {
-                        ft_putendl("Third one clear!");
-                        if (map[y + (cursor->y[2])][x + (cursor->x[2])] == '.')
-                        {
-                            ft_putendl("Fourth one clear!");
-                            ft_putendl("Candidate positions clear. Attempting to place letter...");
-                            map[y][x] = (65 + piece);
-                            ft_putendl("First one placed!");
-                            map[y + cursor->y[0]][x + cursor->x[0]] = (65 + piece);
-                            ft_putendl("Second one placed!");
-                            map[y + cursor->y[1]][x + cursor->x[1]] = (65 + piece);
-                            ft_putendl("Third placed!");
-                            map[y + cursor->y[2]][x + cursor->x[2]] = (65 + piece);
-                            ft_putendl("HOME RUN!");
-                        }
-                    }
+                    ft_putendl("Hit null terminator, going to next line and re-setting x.");
+                    x = 0;
+                    ft_putendl("* Incrementing y...");
+                    ++y;
                 }
-            else
+            if (y > ft_strlen(map[0]))
             {
-                ft_putendl("Cannot place piece at that position, incrementing again.");
-                ++x;
+                ft_putendl("y over limit; map needs to get bigger.");
+                return (-1);
             }
-        }
-        
-            
-            /*else if ((ft_strlen(map[0]) - 2) < (cursor->x[0] || cursor->x[1] || cursor->x[2]))
+        }*/
+        /*    if (map[y][x] == '.')
             {
-                ft_putendl("We're going to need a bigger map...");
-                exit (-1);
-            }*/
-        }    
+                if (check_candidate(cursor, map, x, y) == 0)
+                {
+                    map[y][x] = (65 + piece);
+                    ft_putendl("First one placed!");
+                    map[y + cursor->y[0]][x + cursor->x[0]] = (65 + piece);
+                    ft_putendl("Second one placed!");
+                    map[y + cursor->y[1]][x + cursor->x[1]] = (65 + piece);
+                    ft_putendl("Third placed!");
+                    map[y + cursor->y[2]][x + cursor->x[2]] = (65 + piece);
+                    ft_putendl("HOME RUN!");
+                }
+            }
+        x++;
+        }*/
     }
     return (0);
 }
