@@ -2,16 +2,19 @@
 
 void       free_map(char **map)
 {
-    int     size;
+    /*int     i;*/
+    int     limit,
 
+    i = 0;
+    limit = ft_strlen(map[0]);
     if (map != NULL)
     {
-        size = ft_strlen(map[0]);
-        while (size > 0)
+        while (i < limit)
         {
-            ft_strdel(&map[size]);
+            ft_putendl("Attempting to free line...");
+            ft_strdel(&map[i]);
             ft_putendl("Line freed!");
-            --size;
+            ++i;
         }
         /*free(&map);*/
         ft_putendl("Map freed!");
@@ -41,4 +44,5 @@ void    solve(t_piece *head, int newlines, int max)
     }
     if (ret != -1)
         print_map(map);
+    ft_putendl("Reached end of solve function, going to main."); 
 }

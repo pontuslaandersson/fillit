@@ -5,9 +5,10 @@ void	print_map(char **map)
 	int	line;
 
 	line = 0;
-	while (map[line])
+	while (line < ft_strlen(map[0]))
 	{
 		ft_putendl(map[line]);
 		++line;
 	}
+	ft_putendl("Finished printing map, going back.");
 }

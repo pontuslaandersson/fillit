@@ -64,26 +64,31 @@ int     place_piece(t_piece *head, char **map, int piece)
         {
             ft_putendl("Found first position of new piece.");
             if (map[cursor->y[0]][cursor->x[0]] == '.')
-                ft_putendl("Second one clear!");
-            if (map[y + (cursor->y[1])][x + (cursor->x[1])] == '.')
-                ft_putendl("Third one clear!");
-            if (map[y + (cursor->y[2])][x + (cursor->x[2])] == '.')
-                ft_putendl("Fourth one clear!");
-            {
-                ft_putendl("Candidate positions clear. Attempting to place letter...");
-                map[y][x] = (65 + piece);
-                ft_putendl("First one placed!");
-                map[y + cursor->y[0]][x + cursor->x[0]] = (65 + piece);
-                ft_putendl("Second one placed!");
-                map[y + cursor->y[1]][x + cursor->x[1]] = (65 + piece);
-                ft_putendl("Third placed!");
-                map[y + cursor->y[2]][x + cursor->x[2]] = (65 + piece);
-                ft_putendl("HOME RUN!");
-            }
-            /*else
+                {
+                    ft_putendl("Second one clear!");
+                    if (map[y + (cursor->y[1])][x + (cursor->x[1])] == '.')
+                    {
+                        ft_putendl("Third one clear!");
+                        if (map[y + (cursor->y[2])][x + (cursor->x[2])] == '.')
+                        {
+                            ft_putendl("Fourth one clear!");
+                            ft_putendl("Candidate positions clear. Attempting to place letter...");
+                            map[y][x] = (65 + piece);
+                            ft_putendl("First one placed!");
+                            map[y + cursor->y[0]][x + cursor->x[0]] = (65 + piece);
+                            ft_putendl("Second one placed!");
+                            map[y + cursor->y[1]][x + cursor->x[1]] = (65 + piece);
+                            ft_putendl("Third placed!");
+                            map[y + cursor->y[2]][x + cursor->x[2]] = (65 + piece);
+                            ft_putendl("HOME RUN!");
+                        }
+                    }
+                }
+            else
             {
                 ft_putendl("Cannot place piece.");
-            }*/
+                exit (-1);
+            }
             
             /*else if ((ft_strlen(map[0]) - 2) < (cursor->x[0] || cursor->x[1] || cursor->x[2]))
             {
