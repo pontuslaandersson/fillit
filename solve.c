@@ -39,6 +39,7 @@ void    solve(t_piece *head, int newlines, int max)
         if (ret == -1)
             break ;
         ++placed;
+        print_map(map);
     }
     if (ret == -1)
     {

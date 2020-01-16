@@ -13,7 +13,7 @@ int		find_dot(t_piece *cursor, char **map, int x, int y, int piece)
 		{
 			ret = check_candidate(cursor, map, x, y, piece);
 			if (ret == -1)
-				find_dot(cursor, map, x + 1, y, piece);
+				ret = find_dot(cursor, map, x + 1, y, piece);
 		}
 		if (map[y][x] == '\0')
 		{
@@ -25,7 +25,7 @@ int		find_dot(t_piece *cursor, char **map, int x, int y, int piece)
 		return (0);
 	else
 	{
-		ft_putendl("We're so screwed.");
+		ft_putendl("We ran out of map.");
 		exit (-1);
 	}
 }
