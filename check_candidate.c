@@ -7,7 +7,7 @@ int     check_candidate(t_piece *cursor, char **map, int x, int y, int piece)
     ft_putstr(" and y ");
     ft_putnbr(y);
     ft_putendl("");
-    if (map[x + cursor->y[0]][x + cursor->x[0]] == '.')
+    if (map[y + cursor->y[0]][x + cursor->x[0]] == '.')
     {
         ft_putendl("Second one clear!");
         if (map[y + (cursor->y[1])][x + (cursor->x[1])] == '.')
