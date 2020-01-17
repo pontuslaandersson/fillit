@@ -25,7 +25,8 @@ int		find_dot(t_piece *cursor, char **map, int x, int y, int piece)
 		return (0);
 	else
 	{
-		ft_putendl("We ran out of map.");
-		exit (-1);
+		ft_putendl("Backtraaaaaack!");
+		return (1);
 	}
+	return (0);
 }
