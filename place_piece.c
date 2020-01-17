@@ -20,19 +20,44 @@ int     place_piece(t_piece *head, char **map, int piece)
             while (((head->x[0] + x) < 0 || (head->x[1] + x) < 0 || (head->x[2] + x) < 0) && map[y][x] != '\0'/*there's enough map*/)
             ++x;
         }
-        if (head->x[0] >= ft_strlen(map[0]) || head->x[1] >= ft_strlen(map[0]) || head->x[2] >= ft_strlen(map[0]) || head->y[0] >= ft_strlen(map[0]) || head->y[1] >= ft_strlen(map[0]) || head->y[2] >= ft_strlen(map[0]))
+        if ((head->x[0] + x + 1) > ft_strlen(map[0]) || (head->x[1] + x + 1) > ft_strlen(map[0]) || (head->x[2] + x + 1) > ft_strlen(map[0]) || (head->y[0] + 1) > ft_strlen(map[0]) || (head->y[1] + 1) > ft_strlen(map[0]) || (head->y[2] + 1) > ft_strlen(map[0]))
         {
-            ft_putnbr(ft_strlen(map[0]));
+            /*ft_putnbr(ft_strlen(map[0]));
+            ft_putendl("");
+            ft_putnbr(head->x[0]);
+            ft_putendl("");
+            ft_putnbr(head->y[0]);
+            ft_putendl("");
+            ft_putnbr(head->x[1]);
+            ft_putendl("");
+            ft_putnbr(head->y[1]);
+            ft_putendl("");
+            ft_putnbr(head->x[2]);
+            ft_putendl("");
+            ft_putnbr(head->y[2]);
+            ft_putendl("");*/
             ft_putendl("We're going to need a bigger map...");
             return (-1);
         }
-        ft_putendl("Attempting to place our first hash...");
+        ft_putendl("Placing our first hash.");
         map[y][x] = (65 + piece);
         while (hash < 3)
         {
             ft_putendl("Placing hash...");
-            if (map[head->y[hash]][head->x[hash]] == '.')
-                map[head->y[hash]][head->x[hash]] = 65 + piece;
+            if (map[head->y[hash] + y][head->x[hash] + x] == '.')
+            {
+                map[head->y[hash] + y][head->x[hash] + x] = 65 + piece;
+                ft_putendl("Hash successfully placed.");
+                print_map(map);
+            }
+            else
+            {
+                ft_putstr("Placement unsuccessful at x = ");
+                ft_putnbr(head->x[hash] + x);
+                ft_putstr(" and y = ");
+                ft_putnbr(head->y[hash] + y);
+                ft_putendl(".");
+            }
             ++hash;
         }
         ft_putendl("Hashes placed...");
@@ -45,43 +70,6 @@ int     place_piece(t_piece *head, char **map, int piece)
         ft_putchar('\n');
         cursor = traverse_until(head, piece);
         find_dot(cursor, map, x, y, piece);
-       /* while (check_candidate(cursor, map, x, y) != 0)
-        {
-            y = find_nth_dot_y(map, x, y);
-            x = find_nth_dot_x(map, x, y);*/
-        /*while (map[y][x] != '.' && map[y][x] != '\0' && y < ft_strlen(map[0]))
-        {
-            ft_putendl("Entered while...");
-            ++x;
-            if (map[y][x] == '\0')
-                {
-                    ft_putendl("Hit null terminator, going to next line and re-setting x.");
-                    x = 0;
-                    ft_putendl("* Incrementing y...");
-                    ++y;
-                }
-            if (y > ft_strlen(map[0]))
-            {
-                ft_putendl("y over limit; map needs to get bigger.");
-                return (-1);
-            }
-        }*/
-        /*    if (map[y][x] == '.')
-            {
-                if (check_candidate(cursor, map, x, y) == 0)
-                {
-                    map[y][x] = (65 + piece);
-                    ft_putendl("First one placed!");
-                    map[y + cursor->y[0]][x + cursor->x[0]] = (65 + piece);
-                    ft_putendl("Second one placed!");
-                    map[y + cursor->y[1]][x + cursor->x[1]] = (65 + piece);
-                    ft_putendl("Third placed!");
-                    map[y + cursor->y[2]][x + cursor->x[2]] = (65 + piece);
-                    ft_putendl("HOME RUN!");
-                }
-            }
-        x++;
-        }*/
     }
     return (0);
 }

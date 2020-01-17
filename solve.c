@@ -43,6 +43,11 @@ void    solve(t_piece *head, int newlines, int max)
     }
     if (ret == -1)
     {
+        print_map(map);
+        /*while (1)
+            {
+
+            }*/
         free_map(map);
         solve(head, newlines + 5, max);
     }

@@ -1,34 +1,30 @@
 #include "fillit.h"
 
+int		get_map_size(int newlines)
+{
+	int		n;
+    int    sqr_size;
+
+	n = ((newlines + 1) / 5) * 4;
+
+    sqr_size = 2;
+	while (sqr_size * sqr_size < n)
+		sqr_size++;
+	return (sqr_size);
+}
+
 char	**initialize_map(int newlines)
 {
 	char	**map;
-	int		n;
+	/*int		n;*/
 	int		map_size;
 	int 	i;
 	
 	i = 0;
-	n = (newlines + 1) / 5;
-	if (n == 1)
-		map_size = 2;
-	if (n == 2)
-		map_size = 3;
-	if (n == 3 || n == 4)
-		map_size = 4;
-	if (n == 5 || n == 6)
-		map_size = 5;
-	if (n >= 7 && n <= 9)
-		map_size = 6;
-	if (n >= 10 && n <= 12)
-		map_size = 7;
-	if (n >= 13 && n <= 16)
-		map_size = 8;
-	if (n >= 17 && n <= 20)
-		map_size = 9;
-	if (n >= 21 && n <= 25)
-		map_size = 10;
-	if (n == 26)
-		map_size = 11;
+	map_size = get_map_size(newlines);
+	ft_putstr("Creating map with newlines = ");
+	ft_putnbr(newlines);
+	ft_putendl("");
 	map = create_map(map_size);
 	return (map);
 }
