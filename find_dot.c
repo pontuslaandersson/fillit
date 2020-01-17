@@ -23,7 +23,7 @@ int		find_dot(t_piece *cursor, char **map, int x, int y, int piece)
 	}
 	if (ret == 0)
 		return (0);
-	else
+	else if (y == ft_strlen(map[0]) && map[y - 1][x] == '\0')
 	{
 		ft_putendl("Backtraaaaaack!");
 		return (1);
