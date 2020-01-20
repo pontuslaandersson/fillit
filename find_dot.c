@@ -1,6 +1,6 @@
 #include "fillit.h"
 
-int		find_dot(t_piece *cursor, char **map, int x, int y, int piece)
+int		find_dot(t_piece *cursor, char **map, int x, int y, int placed)
 {
 	int ret;
 
@@ -11,22 +11,22 @@ int		find_dot(t_piece *cursor, char **map, int x, int y, int piece)
 			x++;
 		if (map[y][x] == '.')
 		{
-			ret = check_candidate(cursor, map, x, y, piece);
+			ret = check_candidate(cursor, map, x, y, placed);
 			if (ret == -1)
-				ret = find_dot(cursor, map, x + 1, y, piece);
+				ret = find_dot(cursor, map, x + 1, y, placed);
 		}
 		if (map[y][x] == '\0')
 		{
 			x = 0;
 			y++;
 		}
+		if (y == ft_strlen(map[0]) && map[y - 1][x] == '\0')
+		{
+			ft_putendl("Backtraaaaaack!");
+			backtrack(cursor, map, placed);
+		}
 	}
-	if (ret == 0)
-		return (0);
-	else if (y == ft_strlen(map[0]) && map[y - 1][x] == '\0')
-	{
-		ft_putendl("Backtraaaaaack!");
-		return (1);
-	}
+	/*if (ret == 0)
+		return (0);*/
 	return (0);
 }

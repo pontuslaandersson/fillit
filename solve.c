@@ -25,7 +25,7 @@ void    solve(t_piece *head, int newlines, int max)
 {
     static char    **map;
     int            ret;
-    int            placed;
+    static int            placed;
     
     placed = 0;
     ft_putstr("Max: ");
@@ -52,6 +52,11 @@ void    solve(t_piece *head, int newlines, int max)
         solve(head, newlines + 5, max);
     }
     if (ret != -1)
+    {
+        ft_putstr("Tetros placed:");
+        ft_putnbr(placed);
+        ft_putendl("");
         print_map(map);
+    }
     ft_putendl("Reached end of solve function, going to main."); 
 }
