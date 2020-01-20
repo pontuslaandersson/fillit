@@ -13,9 +13,15 @@ void			backtrack(t_piece *cursor, char **map, int placed)
 	x = 0;
 	y = 0;
 	replaced = 0;
+	ft_putendl("In backtrack function.");
+	ft_putstr("Cursor set to ");
+    ft_putchar(65 + placed);
+	ft_putchar('\n');
 	cursor = cursor->prev;
 	placed--;
-	ft_putendl("In backtrack function.");
+	ft_putstr("Removing piece ");
+    ft_putchar(65 + placed);
+	ft_putchar('\n');
 	while (j < ft_strlen(map[0]))
 	{
 		ft_putendl("In first while.");
@@ -39,5 +45,8 @@ void			backtrack(t_piece *cursor, char **map, int placed)
 		i = 0;
 		j++;
 	}
+	ft_putstr("Attempting to re-place piece ");
+    ft_putchar(65 + placed);
+	ft_putchar('\n');
 	find_dot(cursor, map, (x + 1), y, placed);
 }

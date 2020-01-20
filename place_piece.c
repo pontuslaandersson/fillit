@@ -22,20 +22,6 @@ int     place_piece(t_piece *head, char **map, int placed)
         }
         if ((head->x[0] + x + 1) > ft_strlen(map[0]) || (head->x[1] + x + 1) > ft_strlen(map[0]) || (head->x[2] + x + 1) > ft_strlen(map[0]) || (head->y[0] + 1) > ft_strlen(map[0]) || (head->y[1] + 1) > ft_strlen(map[0]) || (head->y[2] + 1) > ft_strlen(map[0]))
         {
-            /*ft_putnbr(ft_strlen(map[0]));
-            ft_putendl("");
-            ft_putnbr(head->x[0]);
-            ft_putendl("");
-            ft_putnbr(head->y[0]);
-            ft_putendl("");
-            ft_putnbr(head->x[1]);
-            ft_putendl("");
-            ft_putnbr(head->y[1]);
-            ft_putendl("");
-            ft_putnbr(head->x[2]);
-            ft_putendl("");
-            ft_putnbr(head->y[2]);
-            ft_putendl("");*/
             ft_putendl("We're going to need a bigger map...");
             return (-1);
         }
@@ -62,7 +48,7 @@ int     place_piece(t_piece *head, char **map, int placed)
         }
         ft_putendl("Hashes placed...");
     }
-    /* Now we will want to traverse the list and try to place the next placed. */
+    /* Now we will want to traverse the list and try to place the next piece. */
     if (placed > 0) 
     {
         ft_putstr("Attempting to place piece ");
@@ -70,6 +56,11 @@ int     place_piece(t_piece *head, char **map, int placed)
         ft_putchar('\n');
         cursor = traverse_until(head, placed);
         hash = find_dot(cursor, map, x, y, placed);
+        if (hash != 0)
+        {
+            ft_putendl("Unable to place piece.");
+            exit (-1);
+        }
         /*if (hash == 1)
         {
             ft_putendl("Triggered backtracking in place_piece.");
