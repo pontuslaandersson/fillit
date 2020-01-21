@@ -6,7 +6,7 @@
 /*   By: panderss <panderss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/11 14:45:50 by panderss          #+#    #+#             */
-/*   Updated: 2020/01/15 19:58:56 by panderss         ###   ########.fr       */
+/*   Updated: 2020/01/21 17:02:06 by panderss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,8 @@ int		read_file(int fd)
 	}
 	head = store_tetro(file, ret);
 	max = ((ret + 1) / 5);
-	solve(head, ret, max);
+	solve(head, ret, max, 0, 0);
+	/*print_map(map);*/
 	/*ft_putendl("Printing coordinates of starting tetro as returned by store_tetro:");
 	traverse(head);
 	ft_putendl("And now in reverse!");

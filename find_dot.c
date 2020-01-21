@@ -5,32 +5,23 @@ int		find_dot(t_piece *cursor, char **map, int x, int y, int placed)
 	int ret;
 
 	ret = 1;
-	/*ft_putendl("Debug 1");*/
 	while (y < ft_strlen(map[0]) && ret != 0)
 	{
-		/*ft_putendl("Debug 2");*/
-		while (map[y][x] != '.' && map[y][x] != '\0')
-			x++;
+		/*while (map[y][x] != '.' && map[y][x] != '\0')*/
 		if (map[y][x] == '.')
 		{
-			/*ft_putendl("Debug 3");*/
 			ret = check_candidate(cursor, map, x, y, placed);
-			if (ret == -1)
-				ret = find_dot(cursor, map, x + 1, y, placed);
+			if (ret == -1 && map[y][x + 1] != '\0' && map[y][x + 1] == '.')
+				ret = check_candidate(cursor, map, x + 1, y, placed);
 		}
+		x++;
 		if (map[y][x] == '\0')
 		{
-			/*ft_putendl("Debug 4");*/
 			x = 0;
 			y++;
 		}
-		/*if (y == ft_strlen(map[0]) && map[y - 1][x] == '\0')
-		{
-			ft_putendl("Backtraaaaaack!");
-			backtrack(cursor, map, placed);
-		}*/
 	}
-	if (cursor->next != NULL)
+	/*if (cursor->next != NULL)
 		{
 			cursor = cursor->next;
 			placed++;
@@ -41,7 +32,7 @@ int		find_dot(t_piece *cursor, char **map, int x, int y, int placed)
 			y = 0;
 			while (ret != 0)
 				ret = find_dot(cursor, map, x, y, placed);
-		}
+		}*/
 	/*if (ret == 0)
 		return (0);*/
 	return (ret);
