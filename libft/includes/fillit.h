@@ -26,6 +26,7 @@ typedef	struct		s_piece
 	struct s_piece	*next;
 }					t_piece;
 
+
 void		backtrack(t_piece *cursor, char **map, int piece);
 void		print_map(char **map);
 char		**create_map(int n);
@@ -33,6 +34,7 @@ char		**initialize_map(int newlines);
 int     	check_candidate(t_piece *cursor, char **map, int x, int y, int piece);
 int			find_dot(t_piece *cursor, char **map, int x, int y, int piece);
 int			new_line(char *file, char **grid, int lines_read);
+int     	place_first(t_piece *head, char **map, int placed, int n, int start);
 int     	place_piece(t_piece *head, char **map, int placed, int n, int start);
 void		display_error(void);
 void		traverse(t_piece* head);

@@ -23,10 +23,11 @@ void       free_map(char **map)
 
 void    solve(t_piece *head, int newlines, int max, int n, int start)
 {
-    static char             **map;
-    int                     ret;
-    static int              placed;
-    static int              solved;
+    static char     **map;
+    int             ret;
+    static int      placed;
+    static int      solved;
+    t_piece         *cursor;
     
     solved = 0;
     placed = start;
@@ -34,10 +35,10 @@ void    solve(t_piece *head, int newlines, int max, int n, int start)
     ft_putnbr(max);
     ft_putendl("");
     map = initialize_map(newlines);
-    ft_putendl("Sending to place_piece...");
     if (placed == 0)
     {
-        ret = place_piece(head, map, placed, n, start);
+        ft_putendl("Sending to place_first...");
+        ret = place_first(head, map, placed, n, start);
         if (ret == -1)
         {
             free_map(map);
@@ -49,6 +50,7 @@ void    solve(t_piece *head, int newlines, int max, int n, int start)
     {
         while (placed < max)
         {
+            ft_putendl("Sending to place_piece...");
             ret = place_piece(head, map, placed, n, start);
             if (ret == -1)
                 break ;
@@ -57,20 +59,22 @@ void    solve(t_piece *head, int newlines, int max, int n, int start)
     }
     /*if (ret == -2)
     {
+        ft_putendl("Re-trying piece with increased position...");
         print_map(map);
         free_map(map);
         solve(head, newlines, max, n + 1, start);
     }*/
     /*if (ret == -1)
     {
+        ft_putendl("Re-trying whole with larger map...");
         print_map(map);
         free_map(map);
         solve(head, newlines + 5, max, n, start);
     }*/
     ft_putnbr(ret);
-    if (ret == -1 && solved != 1)
+    if (ret == -1 && solved != 1 )
     {
-        ft_putendl("Terminator-Gunde says: Tajm to bakktrakk.");
+        ft_putendl("Re-trying piece with increased position...");
         print_map(map);
         free_map(map);
         solve(head, newlines, max, n + 1, start);
