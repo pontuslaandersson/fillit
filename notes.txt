@@ -1,0 +1,13 @@
+Solve
+	- initialize map
+		- potentially increase map, until placed successfully
+	
+	- place first
+	
+	- solve_map
+		1. place pieces until problem appears
+		2. backtrack
+			- increment placement of prev piece and retried failed piece
+			- keep going until all pieces are placed OR until A has been incremented 
+			and moved to the end of the map and still cannot complete
+		- go back to solve and increase the map
