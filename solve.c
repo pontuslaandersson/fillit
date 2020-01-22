@@ -39,7 +39,7 @@ void    solve(t_piece *head, int newlines, int max)
     if (ret == -1)
     {
         free_map(map);
-        map = create_map(newlines + 5);
+        map = initialize_map(newlines + 5);
         ret = place_first(head, map);
     }
     /*if (placed > 0)
