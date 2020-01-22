@@ -3,30 +3,28 @@
 /*                                                        :::      ::::::::   */
 /*   add_link.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: panderss <panderss@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: panderss <panderss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/07 21:34:03 by panderss          #+#    #+#             */
-/*   Updated: 2020/01/07 21:42:02 by panderss         ###   ########.fr       */
+/*   Updated: 2020/01/22 18:18:17 by panderss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
-t_piece		*add_piece(t_piece *ret, int *x, int *y)
+/*t_piece		*add_piece(t_piece *ret, int *x, int *y)
 {
-    /* go to the last node */
     t_piece *cursor = ret;
     while(cursor->next != NULL)
         cursor = cursor->next;
 
-    /* create a new node */
     t_piece	*new_node =  create(x, y, cursor, NULL);
     cursor->next = new_node;
 
     return (ret);
-}
+}*/
 
-t_piece		*save_addlink_coords(t_piece *start, char **grid, int j, int i)
+t_piece		*save_addlink_coords(t_piece *start, char **grid, int j, int i, int n)
 {
 	int count;
 	int start_x;
@@ -69,12 +67,12 @@ t_piece		*save_addlink_coords(t_piece *start, char **grid, int j, int i)
 	ft_putstr(", ");
 	ft_putnbr(y[2]);
 	ft_putendl("Saving coordinates in struct...");
-	return (add_piece(start, x, y));
+	return (add_piece(start, x, y, n));
 }
 
 /* Finds hashes, saves their coords by calling save_choords. */
 
-t_piece		*add_link(t_piece *start, char **grid)
+t_piece		*add_link(t_piece *start, char **grid, int n)
 {
 	int i;
 	int j;
@@ -86,7 +84,7 @@ t_piece		*add_link(t_piece *start, char **grid)
 		while (grid[j][i] != '\0')
 		{
 			if (grid[j][i] == '#')
-				return (save_addlink_coords(start, grid, j, i));
+				return (save_addlink_coords(start, grid, j, i, n));
 			++i;
 		}
 		++j;

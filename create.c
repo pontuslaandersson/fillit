@@ -1,7 +1,7 @@
 #include "libft.h"
 #include "fillit.h"
 
-t_piece     *create(int *x, int *y, t_piece *prev, t_piece *next)
+t_piece     *create(int *x, int *y, t_piece *prev, t_piece *next, int n)
 {
     int len;
 
@@ -23,6 +23,7 @@ t_piece     *create(int *x, int *y, t_piece *prev, t_piece *next)
 		new_node->y[len] = y[len];
 		++len;
 	}
+    new_node->letter = 65 + n;
     new_node->prev = prev;
     new_node->next = next;
  

@@ -1,5 +1,7 @@
 #include "fillit.h"
 
+/* Old place_piece, not part of current build. */
+
 int     place_piece(t_piece *head, char **map, int placed, int n, int start)
 {
     t_piece     *cursor;

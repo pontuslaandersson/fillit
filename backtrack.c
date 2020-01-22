@@ -1,5 +1,7 @@
 #include "fillit.h"
 
+/* Deprecated backtrack function. */
+
 void			backtrack(t_piece *cursor, char **map, int placed)
 {
 	int i;

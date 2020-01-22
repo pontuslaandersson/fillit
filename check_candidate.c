@@ -1,6 +1,6 @@
 #include "fillit.h"
 
-int     check_candidate(t_piece *cursor, char **map, int x, int y, int placed)
+int     check_candidate(t_piece *cursor, char **map, int x, int y)
 {
     ft_putstr("Found first position of new piece at x ");
     ft_putnbr(x);
@@ -41,16 +41,16 @@ int     check_candidate(t_piece *cursor, char **map, int x, int y, int placed)
                     ft_putendl("");
                     ft_putnbr(ft_strlen(map[0]));
                     ft_putendl("");
-                    map[y][x] = (65 + placed);
+                    map[y][x] = cursor->letter;
                     ft_putendl("First one placed!");
-                    map[y + cursor->y[0]][x + cursor->x[0]] = (65 + placed);
+                    map[y + cursor->y[0]][x + cursor->x[0]] = cursor->letter;
 			    	ft_putendl("Second one placed!");
-                    map[y + cursor->y[1]][x + cursor->x[1]] = (65 + placed);
+                    map[y + cursor->y[1]][x + cursor->x[1]] = cursor->letter;
                     ft_putendl("Third placed!");
-                    map[y + cursor->y[2]][x + cursor->x[2]] = (65 + placed);
+                    map[y + cursor->y[2]][x + cursor->x[2]] = cursor->letter;
                     ft_putendl("HOME RUN!");
                     ft_putstr("Placed piece ");
-                    ft_putchar(65 + placed);
+                    ft_putchar(cursor->letter);
                     ft_putchar('\n');
                     print_map(map);
                     ft_putchar('\n');

@@ -1,20 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   etore_tetro.c                                      :+:      :+:    :+:   */
+/*   store_tetro.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: panderss <panderss@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: panderss <panderss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/28 13:59:19 by panderss          #+#    #+#             */
-/*   Updated: 2020/01/07 22:30:43 by panderss         ###   ########.fr       */
+/*   Updated: 2020/01/22 18:16:46 by panderss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
-
-t_piece		*get_head(char *file);
-
-t_piece		*add_link(t_piece *start, char **grid);
 
 t_piece	*start_list(int *x, int *y)
 {
@@ -123,11 +119,13 @@ t_piece		*store_tetro(char *file, int newlines)
 	int			ret;
 	int			lines_read;
 	t_piece		*start;
+	int			n;
 
 	start = get_head(file);
 	file = ft_strsub(file, 21, ft_strlen(file));
 	newlines = newlines - 5;
 	lines_read = 0;
+	n = 1;
 	while (newlines > 0)
 	{
 		while (lines_read < 4)
@@ -156,15 +154,10 @@ t_piece		*store_tetro(char *file, int newlines)
 		ft_putendl(grid[2]);
 		ft_putstr("Fourth line of array: ");
 		ft_putendl(grid[3]);
-		add_link(start, grid);
+		add_link(start, grid, n);
 		file = ft_strsub(file, 21, ft_strlen(file));
 		newlines = newlines - 5;
+		++n;
 	}
-	/*if (ret == -1)
-	{
-		ft_putendl("Oops, I did it again...");
-		display_error();
-		return (-1);
-	}*/
 	return (start);
 }

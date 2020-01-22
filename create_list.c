@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   create_list.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: panderss <panderss@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: panderss <panderss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/04 12:19:05 by panderss          #+#    #+#             */
-/*   Updated: 2020/01/07 21:18:42 by panderss         ###   ########.fr       */
+/*   Updated: 2020/01/22 18:18:36 by panderss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ t_piece		*create_list(int *x, int *y)
 			new->y[len] = y[len];
 			++len;
 		}
+		new->letter = 'A';
 	}
 	new->prev = NULL;
 	new->next = NULL;
