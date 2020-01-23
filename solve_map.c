@@ -67,7 +67,7 @@ int			solve_map(t_piece *head, char **map)
 		ret = find_dot(cursor, map, x, y);
 		if (ret == -1 && cursor->prev != NULL)
 		{
-			if (cursor->letter == 'E' || cursor->letter == 'F' || cursor->letter == 'G' || cursor->letter == 'H' || cursor->letter == 'I')
+			/*if (cursor->letter == 'E' || cursor->letter == 'F' || cursor->letter == 'G' || cursor->letter == 'H' || cursor->letter == 'I')
 			{
 				ft_putchar(cursor->letter);
 				ft_putchar('\n');
@@ -76,7 +76,7 @@ int			solve_map(t_piece *head, char **map)
 				{
 
 				}
-			}
+			}*/
 			cursor = cursor->prev; /* Move cursor back one step to previous piece. */
 			ft_putstr("Backtracking ");
 			ft_putchar(cursor->letter);
