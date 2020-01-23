@@ -40,7 +40,7 @@ int			backtrack(t_piece *cursor, char **map)
 		i = 0;
 		j++;
 	}
-	return (y*ft_strlen(map[0]) + x);
+	return (y*ft_strlen(map[0]) + x + 1);
 }
 
 int			solve_map(t_piece *head, char **map)
@@ -67,6 +67,16 @@ int			solve_map(t_piece *head, char **map)
 		ret = find_dot(cursor, map, x, y);
 		if (ret == -1 && cursor->prev != NULL)
 		{
+			if (cursor->letter == 'E' || cursor->letter == 'F' || cursor->letter == 'G' || cursor->letter == 'H' || cursor->letter == 'I')
+			{
+				ft_putchar(cursor->letter);
+				ft_putchar('\n');
+				print_map(map);
+				while (1)
+				{
+
+				}
+			}
 			cursor = cursor->prev; /* Move cursor back one step to previous piece. */
 			ft_putstr("Backtracking ");
 			ft_putchar(cursor->letter);
@@ -74,7 +84,7 @@ int			solve_map(t_piece *head, char **map)
 			n = backtrack(cursor, map); /* Should return the offset between original position and the next try; should be +1. */
 			x = n % ft_strlen(map[0]);
 			y = n / ft_strlen(map[0]);
-			++x;
+			/*++x;*/
 			ret = find_dot(cursor, map, x, y); /* increment placement of said previous piece */
 		}
 		if (ret == 0)
