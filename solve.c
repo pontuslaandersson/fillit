@@ -36,10 +36,11 @@ void    solve(t_piece *head, int newlines, int max)
     map = initialize_map(newlines);
     ft_putendl("Sending to place_first...");
     ret = place_first(head, map);
-    if (ret == -1)
+    while (ret == -1)
     {
         free_map(map);
-        map = initialize_map(newlines + 5);
+        newlines = newlines + 5;
+        map = initialize_map(newlines);
         ret = place_first(head, map);
     }
     /*if (placed > 0)
