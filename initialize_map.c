@@ -22,9 +22,9 @@ char	**initialize_map(int newlines)
 	
 	i = 0;
 	map_size = get_map_size(newlines);
-	ft_putstr("Creating map with newlines = ");
+/*	ft_putstr("Creating map with newlines = ");
 	ft_putnbr(newlines);
-	ft_putendl("");
+	ft_putendl(""); */
 	map = create_map(map_size);
 	return (map);
 }

@@ -6,7 +6,7 @@
 /*   By: panderss <panderss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/11 14:45:50 by panderss          #+#    #+#             */
-/*   Updated: 2020/01/22 18:48:49 by panderss         ###   ########.fr       */
+/*   Updated: 2020/01/24 22:21:34 by amchakra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,8 +39,8 @@ char    *get_file(int fd)
 	}
 	if (ret < 0)
 		return (NULL);
-	ft_putendl("String read into str:");
-	ft_putstr(str);
+/*	ft_putendl("String read into str:");
+	ft_putstr(str);*/
 	return (str);
 }
 
@@ -62,15 +62,16 @@ int		read_file(int fd)
 	}
 	/*tetros_read = 0;*/
 	ret = check_tetrominos(file);
-	if (ret != -1)
+	if (ret == -1)
+		return (-1);
+/*	if (ret != -1)
 		ft_putendl("File validated by checker!");
 	else
 	{
-		ft_putendl("Invalid file; exiting. Wah, wah...");
-		return (-1);
-	}
+			ft_putendl("Invalid file; exiting. Wah, wah...");  
+		return (-1); 
+		}*/
 	head = store_tetro(file, ret);
-	ft_strdel(&file);
 	max = ((ret + 1) / 5);
 	solve(head, ret, max);
 	/*print_map(map);*/
@@ -93,20 +94,20 @@ int		main(int argc, char **argv)
 	if (argc != 2)
 	{
 		ft_putendl("usage: ./fillit tetromino_file");
-		return (-1);
+			return (-1); 
 	}
 	else
 	{
 		if (!(fd = open(argv[1], O_RDONLY)) || fd < 0 || fd > FD_MAX)
 		{
 			display_error();
-			return (-1);
+			return (-1); 
 		}
 		ret = read_file(fd);
 		if (ret == -1)
 		{
 			display_error();
-			return (-1);
+			return (-1); 
 		}
 	}
 	return (0);

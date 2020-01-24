@@ -8,7 +8,7 @@ t_piece     *create(int *x, int *y, t_piece *prev, t_piece *next, int n)
     t_piece     *new_node = (t_piece*)malloc(sizeof(t_piece));
     if(new_node == NULL)
     {
-        ft_putendl("Error creating a new node.");
+/*        ft_putendl("Error creating a new node."); */
         return (NULL);
     }
     len = 0;

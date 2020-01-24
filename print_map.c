@@ -10,5 +10,5 @@ void	print_map(char **map)
 		ft_putendl(map[line]);
 		++line;
 	}
-	ft_putendl("Finished printing map, going back.");
+/*	ft_putendl("Finished printing map, going back."); */
 }

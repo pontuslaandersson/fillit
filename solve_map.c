@@ -68,6 +68,12 @@ int			solve_map(t_piece *head, char **map)
 		if (ret == -1 && cursor->prev != NULL)
 		{
 			cursor = cursor->prev; /* Move cursor back one step to previous piece. */
+			/*if(cursor->letter == 'D')
+			{
+				ft_putchar(cursor->letter);
+				ft_putchar('\n');
+				print_map(map);
+				}*/
 			n = backtrack(cursor, map); /* Should return the offset between original position and the next try; should be +1. */
 			x = n % ft_strlen(map[0]);
 			y = n / ft_strlen(map[0]);

@@ -10,7 +10,7 @@ char	**create_map(int n)
 	y = 0;
 	while (y < n)
 	{
-		ft_putendl("Creating line.");
+/*		ft_putendl("Creating line."); */
 		if (!(map[y] = ft_strnew(n + 1)))
 		{
 			display_error();
@@ -21,7 +21,7 @@ char	**create_map(int n)
 	y = 0;
 	while (y < n)
 	{
-		ft_putendl("* Filling line with dots...");
+/*		ft_putendl("* Filling line with dots..."); */
 		x = 0;
 		map[y] = (char*)malloc((sizeof(char) * n) + 1);
 		while (x < n)
@@ -33,12 +33,12 @@ char	**create_map(int n)
 	}
 	x = 0;
 	y = 0;
-	while (y < n)
+/*	while (y < n)
 	{
-		ft_putendl("* Printing a line in array...");
+		ft_putendl("* Printing a line in array...");  
 		ft_putendl(map[y]);
 		y++;
-	}
-	ft_putendl("Returning map...");
+		} */
+/*	ft_putendl("Returning map..."); */
 	return (map);
 }

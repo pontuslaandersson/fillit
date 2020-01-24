@@ -11,13 +11,13 @@ void       free_map(char **map)
     {
         while (i < limit)
         {
-            ft_putendl("Attempting to free line...");
+/*            ft_putendl("Attempting to free line..."); */
             ft_strdel(&map[i]);
-            ft_putendl("Line freed!");
+/*            ft_putendl("Line freed!"); */
             ++i;
         }
         /*free(&map);*/
-        ft_putendl("Map freed!");
+/*        ft_putendl("Map freed!");*/
     }
 }
 
@@ -30,11 +30,11 @@ void    solve(t_piece *head, int newlines, int max)
     int             n;
     
     solved = 0;
-    ft_putstr("Max: ");
+/*    ft_putstr("Max: ");
     ft_putnbr(max);
-    ft_putendl("");
+    ft_putendl(""); */
     map = initialize_map(newlines);
-    ft_putendl("Sending to place_first...");
+/*    ft_putendl("Sending to place_first..."); */
     ret = place_first(head, map);
     while (ret == -1)
     {
@@ -79,7 +79,7 @@ void    solve(t_piece *head, int newlines, int max)
         free_map(map);
         solve(head, newlines + 5, max, n, start);
     }*/
-    ft_putnbr(ret);
+/*    ft_putnbr(ret); */
     /*if (ret == -1 && solved != 1 )
     {
         ft_putendl("Re-trying piece with increased position...");
@@ -89,14 +89,10 @@ void    solve(t_piece *head, int newlines, int max)
     }*/
     if (ret != -1)
     {
-        ft_putendl("MAP SOLVED, MADDAFAKKA.");
+/*        ft_putendl("MAP SOLVED, MADDAFAKKA."); */
         solved = 1;
     }
-    ft_putendl("Reached end of solve function, going to main.");
+/*    ft_putendl("Reached end of solve function, going to main."); */
     if (ret == 0)
-    {
         print_map(map);
-        free_map(map);
-    }
-
 }
