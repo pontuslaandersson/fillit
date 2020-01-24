@@ -94,5 +94,9 @@ void    solve(t_piece *head, int newlines, int max)
     }
     ft_putendl("Reached end of solve function, going to main.");
     if (ret == 0)
+    {
         print_map(map);
+        free_map(map);
+    }
+
 }

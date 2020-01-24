@@ -70,6 +70,7 @@ int		read_file(int fd)
 		return (-1);
 	}
 	head = store_tetro(file, ret);
+	ft_strdel(&file);
 	max = ((ret + 1) / 5);
 	solve(head, ret, max);
 	/*print_map(map);*/
