@@ -6,7 +6,7 @@
 /*   By: panderss <panderss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/11 14:45:50 by panderss          #+#    #+#             */
-/*   Updated: 2020/01/25 14:46:05 by panderss         ###   ########.fr       */
+/*   Updated: 2020/01/25 14:50:11 by panderss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,6 @@ char    *get_file(int fd)
 		tmp = ft_strjoin(str, buf);
 		ft_strdel(&str);
 		str = tmp;
-		/*ft_strdel(&tmp);*/
 	}
 	if (ret < 0)
 		return (NULL);
