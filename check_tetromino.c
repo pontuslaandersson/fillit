@@ -28,25 +28,17 @@ int	is_valid_format(char *file)
 		++c;
 		if (newline == 5)
 		{
- /*			ft_putstr("Entering shape validation at c index: ");
-			ft_putnbr(c);
-			ft_putendl("");
-			ft_putendl("* Checking format."); */
 			if (check_format(file, (c - 21)) != 0)
 			{
-/*				ft_putendl("Invalid format detected!"); */
 				return (-1);
 			}
 			newline = 0;
 		}
 	}
-/*	ft_putendl("* Checking format one last time!"); */
 	if (check_format(file, (c - 20)) != 0)
 	{
-/*		ft_putendl("Invalid format detected on last block!"); */
 		return (-1);
 	}
-/*	ft_putendl("Is_valid_format checker OK. We're in good *format*!"); */
 	return (0);
 }
 int	check_shape(char *file, int c)
@@ -89,25 +81,17 @@ int	check_shape(char *file, int c)
 			++c;
 			if (newline == 5)
 			{
-/*				ft_putstr("Entering shape validation at c index: ");
-				ft_putnbr(c);
-				ft_putendl("");
-				ft_putendl("* Checking shape."); */
 				if (check_shape(file, (c - 21)) != 0)
 				{
-/*					ft_putendl("Invalid shape detected!"); */
 					return (-1);
 				}
 				newline = 0;
 			}
 		}
-/*		ft_putendl("* Checking shape one last time!"); */
 		if (check_shape(file, (c - 20)) != 0)
 		{
-/*			ft_putendl("Invalid shape detected on last block!"); */
 			return (-1);
 		}
-/*		ft_putendl("Is_valid checker OK. We're in good *shape*!"); */
 		return (0);
 	}
 
@@ -130,18 +114,12 @@ int	check_shape(char *file, int c)
 				++newline;
 			if (file[i] != '\n' && file[i] != '.' && file[i] != '#')
 			{
-/*				ft_putendl("Character error."); */
 				return (-1);
 			}
 			++i;
 		}
 		if ((newline - 4) % 5 != 0 || (i - 20) % 21 != 0 || i > 545)
 		{
-/*			ft_putnbr(newline);
-			ft_putendl("");
-			ft_putnbr(i);
-			ft_putendl("");
-			ft_putendl("Error: Programmer sucks at math."); */
 			return (-1);
 		}
 		else
@@ -164,7 +142,6 @@ int	check_shape(char *file, int c)
 			display_error();
 			return (-1);
 		}
-/*		ft_putendl("Hash checker OK."); */
 		return (0);
 	}
 	int	check_dot(char *file)
@@ -184,7 +161,6 @@ int	check_shape(char *file, int c)
 			display_error();
 			return (-1);
 		}
-/*		ft_putendl("Dot checker OK."); */
 		return (0);
 	}
 	int	check_newlines(char *file)
@@ -204,9 +180,9 @@ int	check_shape(char *file, int c)
 			display_error();
 			return (-1);
 		}
-/*		ft_putendl("Newline checker OK."); */
 		return (newline);
 	}
+
 /* Checks hashes, dots, newlines, shapes of entire file. */
 int	check_tetrominos(char *file)
 {
@@ -217,8 +193,6 @@ int	check_tetrominos(char *file)
 
 	if ((tetros = check_file(file)) < 0)
 	{
-/*		ft_putendl("Check_file function non-functional."); */
-	display_error();
 	return (-1);
 	}
 	if (check_hash(file) != 0 || check_dot(file) != 0 || 

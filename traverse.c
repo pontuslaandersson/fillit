@@ -7,7 +7,6 @@ void	traverse(t_piece *head)
 	cursor = head;
     while (cursor != NULL)
     {
-/*		ft_putendl("* Printing a set of coordinates..."); */
         print_list(cursor);
         cursor = cursor->next;
     }

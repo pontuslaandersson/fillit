@@ -6,7 +6,7 @@
 /*   By: panderss <panderss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/11 14:45:50 by panderss          #+#    #+#             */
-/*   Updated: 2020/01/24 22:21:34 by amchakra         ###   ########.fr       */
+/*   Updated: 2020/01/25 11:50:12 by amchakra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,8 +39,6 @@ char    *get_file(int fd)
 	}
 	if (ret < 0)
 		return (NULL);
-/*	ft_putendl("String read into str:");
-	ft_putstr(str);*/
 	return (str);
 }
 
@@ -60,27 +58,13 @@ int		read_file(int fd)
 		display_error();
 		return (-1);
 	}
-	/*tetros_read = 0;*/
 	ret = check_tetrominos(file);
 	if (ret == -1)
 		return (-1);
-/*	if (ret != -1)
-		ft_putendl("File validated by checker!");
-	else
-	{
-			ft_putendl("Invalid file; exiting. Wah, wah...");  
-		return (-1); 
-		}*/
 	head = store_tetro(file, ret);
 	max = ((ret + 1) / 5);
 	solve(head, ret, max);
-	/*print_map(map);*/
-	/*ft_putendl("Printing coordinates of starting tetro as returned by store_tetro:");
-	traverse(head);
-	ft_putendl("And now in reverse!");
-	traverse_rev(head);*/
-/*	while (1)
-		ft_putendl("Loops and leaks...");*/
+
 	return (0);
 }
 

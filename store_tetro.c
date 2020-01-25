@@ -6,7 +6,7 @@
 /*   By: panderss <panderss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/28 13:59:19 by panderss          #+#    #+#             */
-/*   Updated: 2020/01/24 22:19:08 by amchakra         ###   ########.fr       */
+/*   Updated: 2020/01/25 11:47:48 by amchakra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@ t_piece	*start_list(int *x, int *y)
 {
 	t_piece *start;
 
-/*	ft_putendl("Starting list."); */
 	start = create_list(x, y);
 	return (start);
 }
@@ -48,22 +47,6 @@ t_piece		*save_coords(char **grid, int j, int i)
 		i = 0;
 		++j;
 	}
-/*	ft_putendl("First block assumed to be at x = 0, y = 0.");
-	ft_putstr("Relative coordinates of second block: ");
-	ft_putnbr(x[0]);
-	ft_putstr(", ");
-	ft_putnbr(y[0]);
-	ft_putendl("");
-	ft_putstr("Relative coordinates of third block: ");
-	ft_putnbr(x[1]);
-	ft_putstr(", ");
-	ft_putnbr(y[1]);
-	ft_putendl("");
-	ft_putstr("Relative coordinates of second block: ");
-	ft_putnbr(x[2]);
-	ft_putstr(", ");
-	ft_putnbr(y[2]);
-	ft_putendl("Saving coordinates in struct..."); */
 	return (start_list(x, y));
 }
 
@@ -89,27 +72,6 @@ t_piece		*find_coords(char **grid)
 	display_error(); 
 	exit(-1);
 }
-
-/* Gets each line of the 2D array. */
-
-/*int		new_line(char *file, char **grid, int lines_read)
-{
-	char	*tmp;
-	int		len;
-
-	len = 0;
-	while (file[len] != '\n' && file[len] != '\0')
-		len++;
-	if (file[len] == '\n')
-	{
-		grid[lines_read] = ft_strsub(file, (lines_read * 5), len);
-		tmp = ft_strdup(file + len + 1);
-		file = tmp;
-	}
-	if ((file[len]) == '\0')
-		return (0);
-	return (1);
-}*/
 
 /* Reads from file into 2D array, calls find_coords to store them in linked list. */
 
@@ -137,23 +99,12 @@ t_piece		*store_tetro(char *file, int newlines)
 			}
 			lines_read++;
 		}
-/*		ft_putendl("Transforming into 2d array..."); */
 		lines_read = 0;
 		while (lines_read < 4)
 		{
 			ret = new_line(file, grid, lines_read);
-/*			ft_putendl("Increasing lines_read..."); */
 			lines_read++;
 		}
-/*		ft_putnbr(ret);
-		ft_putstr("First line of array: ");
-		ft_putendl(grid[0]); *//* Lines to display what we have read from the string.*/
-/*		ft_putstr("Second line of array: ");
-		ft_putendl(grid[1]);
-		ft_putstr("Third line of array: ");
-		ft_putendl(grid[2]);
-		ft_putstr("Fourth line of array: ");
-		ft_putendl(grid[3]); */
 		add_link(start, grid, n);
 		file = ft_strsub(file, 21, ft_strlen(file));
 		newlines = newlines - 5;

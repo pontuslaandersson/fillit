@@ -6,13 +6,11 @@
 /*   By: panderss <panderss@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/07 22:07:46 by panderss          #+#    #+#             */
-/*   Updated: 2020/01/07 22:08:21 by panderss         ###   ########.fr       */
+/*   Updated: 2020/01/25 11:44:33 by amchakra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
-
-/* Gets each line of the 2D array. */
 
 int		new_line(char *file, char **grid, int lines_read)
 {
@@ -28,13 +26,5 @@ int		new_line(char *file, char **grid, int lines_read)
 		tmp = ft_strdup(file + len + 1);
 		file = tmp;
 	}
-	/*if ((file[len]) == '\0')
-		return (0);*/
-	/*else if (file[len] == '\0')
-	{
-		grid[lines_read] = ft_strdup(file);
-		ft_strdel(&file);
-		return (0);
-	}*/
 	return (1);
 }

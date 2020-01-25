@@ -12,8 +12,5 @@ t_piece		*traverse_until(t_piece *head, int piece)
         cursor = cursor->next;
 		++i;
     }
-/*	ft_putendl("Coordinates of piece to place: ");
-	print_list(cursor);
-	ft_putendl(""); */
 	return (cursor);
 }

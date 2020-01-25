@@ -6,23 +6,11 @@
 /*   By: panderss <panderss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/07 21:34:03 by panderss          #+#    #+#             */
-/*   Updated: 2020/01/24 19:47:49 by amchakra         ###   ########.fr       */
+/*   Updated: 2020/01/25 11:28:15 by amchakra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
-
-/*t_piece		*add_piece(t_piece *ret, int *x, int *y)
-{
-    t_piece *cursor = ret;
-    while(cursor->next != NULL)
-        cursor = cursor->next;
-
-    t_piece	*new_node =  create(x, y, cursor, NULL);
-    cursor->next = new_node;
-
-    return (ret);
-}*/
 
 t_piece		*save_addlink_coords(t_piece *start, char **grid, int j, int i, int n)
 {
@@ -51,26 +39,8 @@ t_piece		*save_addlink_coords(t_piece *start, char **grid, int j, int i, int n)
 		i = 0;
 		++j;
 	}
-/*	ft_putendl("First block assumed to be at x = 0, y = 0.");
-	ft_putstr("Relative coordinates of second block: ");
-	ft_putnbr(x[0]);
-	ft_putstr(", ");
-	ft_putnbr(y[0]);
-	ft_putendl("");
-	ft_putstr("Relative coordinates of third block: ");
-	ft_putnbr(x[1]);
-	ft_putstr(", ");
-	ft_putnbr(y[1]);
-	ft_putendl("");
-	ft_putstr("Relative coordinates of second block: ");
-	ft_putnbr(x[2]);
-	ft_putstr(", ");
-	ft_putnbr(y[2]);
-	ft_putendl("Saving coordinates in struct..."); */
 	return (add_piece(start, x, y, n));
 }
-
-/* Finds hashes, saves their coords by calling save_choords. */
 
 t_piece		*add_link(t_piece *start, char **grid, int n)
 {
