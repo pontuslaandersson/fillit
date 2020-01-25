@@ -3,14 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   store_tetro.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: panderss <panderss@student.42.fr>          +#+  +:+       +#+        */
+/*   By: amchakra <amchakra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/28 13:59:19 by panderss          #+#    #+#             */
-/*   Updated: 2020/01/25 16:52:32 by amchakra         ###   ########.fr       */
+/*   Updated: 2020/01/25 19:21:29 by amchakra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
+#include <stdio.h>
 
 t_piece	*start_list(int *x, int *y)
 {
@@ -82,10 +83,12 @@ t_piece		*store_tetro(char *file, int newlines)
 	int			lines_read;
 	t_piece		*start;
 	int			n;
-/*	char		*tmp; */
+	char		*tmp; 
 
 	start = get_head(file);
-	file = ft_strsub(file, 21, ft_strlen(file));
+	tmp = ft_strsub(file, 21, ft_strlen(file));
+	free(file);
+	file = tmp;
 	newlines = newlines - 5;
 	lines_read = 0;
 	n = 1;
@@ -107,9 +110,13 @@ t_piece		*store_tetro(char *file, int newlines)
 			lines_read++;
 		}
 		add_link(start, grid, n);
-		file = ft_strsub(file, 21, ft_strlen(file));
+		tmp = ft_strsub(file, 21, ft_strlen(file));
+		free(file);
+		file = tmp;
 		newlines = newlines - 5;
 		++n;
 	}
+	free(file);
+	system("leaks a.out");
 	return (start);
 }
