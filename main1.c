@@ -6,7 +6,7 @@
 /*   By: panderss <panderss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/11 14:45:50 by panderss          #+#    #+#             */
-/*   Updated: 2020/01/25 17:01:51 by amchakra         ###   ########.fr       */
+/*   Updated: 2020/01/25 16:24:21 by amchakra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ int		read_file(int fd)
 	file = get_file(fd);
 	if (file == NULL)
 	{
-/*		display_error(); */
+		display_error();
 		return (-1);
 	}
 	ret = check_tetrominos(file);
@@ -93,6 +93,10 @@ int		main(int argc, char **argv)
 			display_error();
 			return (-1); 
 		}
+	}
+	while (1)
+	{
+
 	}
 	return (0);
 }

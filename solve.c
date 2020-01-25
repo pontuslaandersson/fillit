@@ -1,5 +1,35 @@
 #include "fillit.h"
 
+void	print_map(char **map)
+{
+	int		line;
+
+	line = 0;
+	while (line < ft_strlen(map[0]))
+	{
+		ft_putendl(map[line]);
+		++line;
+	}
+	free_map(map);
+}
+
+void       free_map(char **map)
+{
+    int     i;
+    int     limit;
+
+    i = 0;
+    limit = ft_strlen(map[0]);
+    if (map != NULL)
+    {
+        while (i < limit)
+        {
+            ft_strdel(&map[i]);
+            ++i;
+        }
+    }
+}
+
 void    solve(t_piece *head, int newlines, int max)
 {
     static char     **map;
@@ -31,5 +61,4 @@ void    solve(t_piece *head, int newlines, int max)
     }
     if (ret == 0)
         print_map(map);
-    free_map(map);
 }

@@ -6,10 +6,11 @@
 /*   By: panderss <panderss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/04 12:19:05 by panderss          #+#    #+#             */
-/*   Updated: 2020/01/25 13:30:06 by panderss         ###   ########.fr       */
+/*   Updated: 2020/01/24 20:00:05 by amchakra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "libft.h"
 #include "fillit.h"
 
 t_piece		*create_list(int *x, int *y)
@@ -19,7 +20,10 @@ t_piece		*create_list(int *x, int *y)
 
 	new = (t_piece*)ft_memalloc(sizeof(t_piece));
 	if (new == NULL)
+	{
+/*		ft_putendl("Error creating node."); */
 		return (NULL);
+	}
 	else
 	{
 			len = 0;
