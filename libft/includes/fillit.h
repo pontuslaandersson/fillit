@@ -6,7 +6,7 @@
 /*   By: panderss <panderss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/04 13:32:32 by panderss          #+#    #+#             */
-/*   Updated: 2020/01/22 19:01:51 by panderss         ###   ########.fr       */
+/*   Updated: 2020/01/25 13:38:49 by panderss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,10 @@ int			find_dot(t_piece *cursor, char **map, int x, int y);
 int			new_line(char *file, char **grid, int lines_read);
 int     	place_first(t_piece *head, char **map);
 int     	place_piece(t_piece *head, char **map, int placed, int n, int start);
+void		del_list(t_piece *head);
 void		display_error(void);
+void		free_array(char **grid);
+void		free_map(char **map);
 void		traverse(t_piece* head);
 void		traverse_rev(t_piece* head);
 void		print_list(t_piece *cursor);
@@ -48,6 +51,8 @@ t_piece		*create(int *x, int *y, t_piece *prev, t_piece *next, int n);
 t_piece		*add_piece(t_piece *ret, int *x, int *y, int n);
 t_piece		*find_coords(char **grid);
 t_piece		*get_head(char *file);
+t_piece		*save_coords(char **grid, int j, int i);
+t_piece		*start_list(int *x, int *y);
 t_piece		*traverse_until(t_piece *head, int piece);
 
 #endif

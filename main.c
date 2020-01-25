@@ -6,7 +6,7 @@
 /*   By: panderss <panderss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/11 14:45:50 by panderss          #+#    #+#             */
-/*   Updated: 2020/01/25 11:50:12 by amchakra         ###   ########.fr       */
+/*   Updated: 2020/01/25 14:46:05 by panderss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ char    *get_file(int fd)
 		tmp = ft_strjoin(str, buf);
 		ft_strdel(&str);
 		str = tmp;
+		/*ft_strdel(&tmp);*/
 	}
 	if (ret < 0)
 		return (NULL);
@@ -48,9 +49,9 @@ char    *get_file(int fd)
 int		read_file(int fd)
 {
 	static char		*file;
-	int			ret;
-	t_piece		*head;
-	int			max;
+	int				ret;
+	t_piece			*head;
+	int				max;
 	
 	file = get_file(fd);
 	if (file == NULL)
@@ -62,9 +63,10 @@ int		read_file(int fd)
 	if (ret == -1)
 		return (-1);
 	head = store_tetro(file, ret);
+	ft_strdel(&file);
 	max = ((ret + 1) / 5);
 	solve(head, ret, max);
-
+	del_list(head);
 	return (0);
 }
 
@@ -93,6 +95,10 @@ int		main(int argc, char **argv)
 			display_error();
 			return (-1); 
 		}
+	}
+	while (1)
+	{
+		
 	}
 	return (0);
 }

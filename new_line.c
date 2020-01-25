@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   new_line.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: panderss <panderss@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: panderss <panderss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/07 22:07:46 by panderss          #+#    #+#             */
-/*   Updated: 2020/01/25 11:44:33 by amchakra         ###   ########.fr       */
+/*   Updated: 2020/01/25 14:44:36 by panderss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ int		new_line(char *file, char **grid, int lines_read)
 		grid[lines_read] = ft_strsub(file, (lines_read * 5), len);
 		tmp = ft_strdup(file + len + 1);
 		file = tmp;
+		ft_strdel(&tmp);
 	}
 	return (1);
 }

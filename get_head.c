@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_head.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: panderss <panderss@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: panderss <panderss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/07 21:53:51 by panderss          #+#    #+#             */
-/*   Updated: 2020/01/25 11:30:47 by amchakra         ###   ########.fr       */
+/*   Updated: 2020/01/25 13:37:17 by panderss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,5 +36,6 @@ t_piece		*get_head(char *file)
 		lines_read++;
 	}
 	start = find_coords(start_grid);
+	free_array(start_grid);
 	return (start);
 }

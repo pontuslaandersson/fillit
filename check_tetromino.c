@@ -1,4 +1,3 @@
-#include "libft.h"
 #include "fillit.h"
 
 int	check_format(char *file, int c)
@@ -96,9 +95,9 @@ int	check_shape(char *file, int c)
 	}
 
 /*
-** checks for: 
-** - that correct characters are present, 
-** - correct number of lines, 
+** checks for:
+** - that correct characters are present,
+** - correct number of lines,
 ** - correct number of tetro blocks
 ** - the size of the file is for no more than 26 tetros, i.e. 545 characters
 */
@@ -195,7 +194,7 @@ int	check_tetrominos(char *file)
 	{
 	return (-1);
 	}
-	if (check_hash(file) != 0 || check_dot(file) != 0 || 
+	if (check_hash(file) != 0 || check_dot(file) != 0 ||
 		(total = check_newlines(file)) < 0 || is_valid_shape(file) != 0 ||
 		is_valid_format(file) != 0)
 	{
