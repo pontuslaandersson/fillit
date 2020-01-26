@@ -6,7 +6,7 @@
 /*   By: panderss <panderss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/11 14:45:50 by panderss          #+#    #+#             */
-/*   Updated: 2020/01/25 17:01:51 by amchakra         ###   ########.fr       */
+/*   Updated: 2020/01/26 19:59:39 by amchakra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ int		read_file(int fd)
 	head = store_tetro(file, ret);
 	max = ((ret + 1) / 5);
 	solve(head, ret, max);
-
+/*	system("leaks a.out"); */
 	return (0);
 }
 

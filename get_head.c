@@ -6,7 +6,7 @@
 /*   By: panderss <panderss@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/07 21:53:51 by panderss          #+#    #+#             */
-/*   Updated: 2020/01/25 17:13:40 by amchakra         ###   ########.fr       */
+/*   Updated: 2020/01/26 19:55:55 by amchakra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ t_piece		*get_head(char *file)
 	int			lines_read;
 	t_piece		*start;
 
-	lines_read = 0;
+/*	lines_read = 0;
 	while (lines_read < 4)
 	{
 		if (!(start_grid[lines_read] = ft_strnew(5)))
@@ -28,8 +28,8 @@ t_piece		*get_head(char *file)
 			exit (-1);
 		}
 		lines_read++;
-	}
-	lines_read = 0;
+		} */
+		lines_read = 0; 
 	while (lines_read < 4)
 	{
 		ret = new_line(file, start_grid, lines_read);

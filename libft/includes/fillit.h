@@ -6,7 +6,7 @@
 /*   By: panderss <panderss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/04 13:32:32 by panderss          #+#    #+#             */
-/*   Updated: 2020/01/25 13:38:49 by panderss         ###   ########.fr       */
+/*   Updated: 2020/01/26 18:33:40 by amchakra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # define FD_MAX 4864
 
 # include "libft.h"
+# include <stdio.h>
 
 typedef	struct		s_piece
 {

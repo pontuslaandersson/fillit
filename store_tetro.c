@@ -6,12 +6,11 @@
 /*   By: amchakra <amchakra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/28 13:59:19 by panderss          #+#    #+#             */
-/*   Updated: 2020/01/25 19:21:29 by amchakra         ###   ########.fr       */
+/*   Updated: 2020/01/26 20:00:22 by amchakra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
-#include <stdio.h>
 
 t_piece	*start_list(int *x, int *y)
 {
@@ -117,6 +116,6 @@ t_piece		*store_tetro(char *file, int newlines)
 		++n;
 	}
 	free(file);
-	system("leaks a.out");
+/*	system("leaks a.out"); */
 	return (start);
 }
