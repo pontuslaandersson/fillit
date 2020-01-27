@@ -6,11 +6,16 @@
 /*   By: amchakra <amchakra@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/27 15:44:55 by amchakra          #+#    #+#             */
-/*   Updated: 2020/01/27 15:48:20 by amchakra         ###   ########.fr       */
+/*   Updated: 2020/01/27 20:10:31 by amchakra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
+
+/*
+** Checks inside the tetro piece if the dots, hashes and new lines are in the
+** correct places
+*/
 
 int	check_format(char *file, int c)
 {
@@ -19,13 +24,18 @@ int	check_format(char *file, int c)
 	i = 0;
 	while (i++ < 19)
 	{
-		if (i % 5 < 4 && file[i] != '.' && file[i] != '#')
-			return (-1);
-		if ((i % 5 == 4) && file[i] != '\n')
+		if ((i % 5 < 4 && file[i] != '.' && file[i] != '#') ||
+			((i % 5 == 4) && file[i] != '\n'))
 			return (-1);
 	}
 	return (0);
 }
+
+/*
+** Checks whether the shape of the tetro is correct. There are 6 contacts
+** between all the tetromino hashes, except in case of a square, when there
+** are contacts.
+*/
 
 int	check_shape(char *file, int c)
 {
@@ -54,28 +64,33 @@ int	check_shape(char *file, int c)
 	return (0);
 }
 
+/*
+** Checks whether in each 21 (20 if at the end) characters,
+** the tetrominos have the correct grid and shape.
+*/
+
 int	check_tetro(char *file)
 {
-	int	c;
+	int	i;
 	int	newline;
 
-	c = 0;
+	i = 0;
 	newline = 0;
-	while (file[c] != '\0')
+	while (file[i] != '\0')
 	{
-		if (file[c] == '\n')
+		if (file[i] == '\n')
 			++newline;
-		++c;
+		++i;
 		if (newline == 5)
 		{
-			if ((check_shape(file, (c - 21)) != 0) ||
-				(check_format(file, (c - 21)) != 0))
+			if ((check_shape(file, (i - 21)) != 0) ||
+				(check_format(file, (i - 21)) != 0))
 				return (-1);
 			newline = 0;
 		}
 	}
-	if ((check_shape(file, (c - 20)) != 0) ||
-		(check_format(file, (c - 20)) != 0))
+	if ((check_shape(file, (i - 20)) != 0) ||
+		(check_format(file, (i - 20)) != 0))
 		return (-1);
 	return (0);
 }
@@ -117,7 +132,8 @@ int	check_file(char *file)
 }
 
 /*
-**Checks hashes, dots, newlines, shapes of entire file.
+** Checks if the file contains tetrominos and returns the number
+** of lines.
 */
 
 int	check_tetrominos(char *file)
