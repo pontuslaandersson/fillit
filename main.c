@@ -6,7 +6,7 @@
 /*   By: panderss <panderss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/11 14:45:50 by panderss          #+#    #+#             */
-/*   Updated: 2020/01/26 19:59:39 by amchakra         ###   ########.fr       */
+/*   Updated: 2020/01/27 18:28:13 by panderss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,17 +54,13 @@ int		read_file(int fd)
 	
 	file = get_file(fd);
 	if (file == NULL)
-	{
-/*		display_error(); */
 		return (-1);
-	}
 	ret = check_tetrominos(file);
 	if (ret == -1)
 		return (-1);
 	head = store_tetro(file, ret);
 	max = ((ret + 1) / 5);
 	solve(head, ret, max);
-/*	system("leaks a.out"); */
 	return (0);
 }
 

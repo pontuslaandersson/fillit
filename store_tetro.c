@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   store_tetro.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amchakra <amchakra@student.42.fr>          +#+  +:+       +#+        */
+/*   By: panderss <panderss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/28 13:59:19 by panderss          #+#    #+#             */
-/*   Updated: 2020/01/26 20:00:22 by amchakra         ###   ########.fr       */
+/*   Updated: 2020/01/27 18:00:18 by panderss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,15 +93,6 @@ t_piece		*store_tetro(char *file, int newlines)
 	n = 1;
 	while (newlines > 0)
 	{
-		while (lines_read < 4)
-		{
-			if (!(grid[lines_read] = ft_strnew(5)))
-			{
-				display_error(); 
-				exit (-1);
-			}
-			lines_read++;
-		}
 		lines_read = 0;
 		while (lines_read < 4)
 		{
@@ -114,8 +105,11 @@ t_piece		*store_tetro(char *file, int newlines)
 		file = tmp;
 		newlines = newlines - 5;
 		++n;
+		free(grid[0]); /* This is how the free seems to have to work! Frag it! */
+		free(grid[1]);
+		free(grid[2]);
+		free(grid[3]);
 	}
 	free(file);
-/*	system("leaks a.out"); */
 	return (start);
 }

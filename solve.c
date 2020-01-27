@@ -60,5 +60,8 @@ void    solve(t_piece *head, int newlines, int max)
         solved = 1;
     }
     if (ret == 0)
+    {
         print_map(map);
+        exit (0);
+    }
 }
