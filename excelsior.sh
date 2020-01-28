@@ -101,6 +101,9 @@ clear
 read -p	"test-easy" 
 ./a.out tests/test-easy
 printf '\n'
+read -p	"4-down" 
+./a.out tests/4-down
+printf '\n'
 read -p "test-peasy" 
 ./a.out tests/test-peasy
 printf '\n'

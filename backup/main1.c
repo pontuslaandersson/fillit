@@ -3,56 +3,100 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: panderss <panderss@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: panderss <panderss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/11 14:45:50 by panderss          #+#    #+#             */
-/*   Updated: 2019/12/12 16:17:12 by panderss         ###   ########.fr       */
+/*   Updated: 2020/01/25 16:24:21 by amchakra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
-#include "libft.h"
+#include "fillit.h"
 #include <fcntl.h>
 
-void	display_error(void)
+t_piece		*store_tetro(char *file, int newlines);
+
+int		check_tetrominos(char *file);
+
+/* Reads the file into a buffer, and which it joins to previously read */
+/* material. It keeps going until it has read the whole file into a string, */
+/* which it then returns. */
+
+char    *get_file(int fd)
 {
-	ft_putstr("error");
+    static char *str;
+	char		buf[BUFF_SIZE + 1];
+	ssize_t		ret;
+	char		*tmp;
+
+    while ((ret = read(fd, buf, BUFF_SIZE)) > 0)
+    {
+		buf[ret] = '\0';
+		if (str == NULL)
+			str = ft_strnew(0);
+		tmp = ft_strjoin(str, buf);
+		ft_strdel(&str);
+		str = tmp;
+	}
+	if (ret < 0)
+		return (NULL);
+	return (str);
 }
 
-int		main(int argc, char **argv)
-{
-	char	*grid[4];
-	char	*line;
-	int		ret;
-	int		lines_read;
-	int		fd;
+/* Where the action happens. Calls get_file, calls check_tetrominos, */
+/* calls store_tetro. */
 
-	ft_putendl("Starting program.");
-	if (argc != 2)
+int		read_file(int fd)
+{
+	static char		*file;
+	int			ret;
+	t_piece		*head;
+	int			max;
+	
+	file = get_file(fd);
+	if (file == NULL)
 	{
-		//ft_putendl("error");
 		display_error();
 		return (-1);
 	}
+	ret = check_tetrominos(file);
+	if (ret == -1)
+		return (-1);
+	head = store_tetro(file, ret);
+	max = ((ret + 1) / 5);
+	solve(head, ret, max);
+
+	return (0);
+}
+
+/* Main opens file and goes to read_file.*/
+
+int		main(int argc, char **argv)
+{
+	int			ret;
+	int			fd;
+
+	if (argc != 2)
+	{
+		ft_putendl("usage: ./fillit tetromino_file");
+			return (-1); 
+	}
 	else
 	{
-		lines_read = 0;
-		blocks = 0;
 		if (!(fd = open(argv[1], O_RDONLY)) || fd < 0 || fd > FD_MAX)
 		{
 			display_error();
-			return (-1);
+			return (-1); 
 		}
-		while ((ret = get_next_line(fd, &line)) == 1 && lines_read < 4)
+		ret = read_file(fd);
+		if (ret == -1)
 		{
-			grid[lines_read] = ft_strdup(line);
-			free(line);
-			lines_read++;
+			display_error();
+			return (-1); 
 		}
-		ft_putendl(grid[0]);
-		ft_putendl(grid[1]);
-		ft_putendl(grid[2]);
-		ft_putendl(grid[3]);
+	}
+	while (1)
+	{
+
 	}
 	return (0);
 }
