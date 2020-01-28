@@ -6,7 +6,7 @@
 /*   By: panderss <panderss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/28 13:03:04 by panderss          #+#    #+#             */
-/*   Updated: 2020/01/28 14:25:56 by panderss         ###   ########.fr       */
+/*   Updated: 2020/01/28 19:42:16 by amchakra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,24 @@ void		free_map(char **map)
 			++i;
 		}
 	}
+}
+
+/*
+** Find the initial size of the map using the number of tetros and
+** using the idea that the the smallest tetro needs a 2x2 square
+*/
+
+char		**initialize_map(int newlines)
+{
+	char			**map;
+	int				map_size;
+	int				sqr_size;
+
+	sqr_size = 2;
+	while (sqr_size * sqr_size < ((newlines + 1) / 5) * 4)
+		sqr_size++;
+	map = create_map(sqr_size);
+	return (map);
 }
 
 void		solve(t_piece *head, int newlines, int max)

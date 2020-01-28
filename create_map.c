@@ -4,8 +4,8 @@ char	**create_map(int n)
 {
 	char	**map;
 	char	**tmp;
-	int		y;	
 	int		x;
+	int		y;
 
 	tmp = (char**)malloc(sizeof(char*) * n);
 	y = 0;
@@ -14,7 +14,7 @@ char	**create_map(int n)
 		if (!(tmp[y] = ft_strnew(n)))
 		{
 			display_error();
-			exit (-1);
+			exit(-1);
 		}
 		++y;
 	}

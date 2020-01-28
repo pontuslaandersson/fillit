@@ -11,3 +11,56 @@ Solve
 			- keep going until all pieces are placed OR until A has been incremented 
 			and moved to the end of the map and still cannot complete
 		- go back to solve and increase the map
+
+
+== Functions structure ==
+
+main
+	 read_file (*)
+ 	 get_file
+ 	 read_file (*)	  
+ 	 check_tetrominos
+		check_file (*)	
+  		check_tetro (*)
+   			check_shape (*)
+   			check_format (*)
+  	store_tetro
+		get_head
+			new_line
+    		find_coords
+				save_coords
+					start_list
+						create_list
+   		new_line
+   		add_link 
+    		save_addlink_coords (*)
+     			add_piece
+					create
+   		get_link
+  	solve		
+   		initialize_map (*)
+			create_map
+   		place_first
+		reinitialise_map (*)
+   		solve_map
+   		print_map
+
+== Files normed ==
+
+		add_link.c 
+		add_piece.c 
+x		check_candidate.c 
+x		check_tetromino.c 
+		create.c 
+		create_list.c 
+		create_map.c 
+		display_error.c 
+x		find_dot.c 
+x		get_head.c 
+x		main.c 
+		new_line.c 
+x		place_first.c
+x		solve.c 
+x		solve_map.c 
+		store_tetro.c	
+		traverse_until.c 

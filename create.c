@@ -1,4 +1,3 @@
-#include "libft.h"
 #include "fillit.h"
 
 t_piece     *create(int *x, int *y, t_piece *prev, t_piece *next, int n)

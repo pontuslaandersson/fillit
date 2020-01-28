@@ -1,1 +1,18 @@
-gcc add_piece.c add_link.c get_head.c place_first.c find_dot.c check_candidate.c traverse_until.c solve.c solve_map.c initialize_map.c create_map.c new_line.c create.c create_list.c traverse.c traverse_rev.c print_list.c store_tetro.c main.c check_tetromino.c display_error.c -L ./libft -lft -I ./libft/includes
+gcc add_link.c \
+add_piece.c \
+check_candidate.c \
+check_tetromino.c \
+create.c \
+create_list.c \
+create_map.c \
+display_error.c \
+find_dot.c \
+get_head.c \
+main.c \
+new_line.c \
+place_first.c \
+solve.c \
+solve_map.c \
+store_tetro.c \
+traverse_until.c \
+-L ./libft -lft -I ./libft/includes 

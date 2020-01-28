@@ -1,25 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   add_piece.c                                        :+:      :+:    :+:   */
+/*   initialize_map.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: panderss <panderss@student.42.fr>          +#+  +:+       +#+        */
+/*   By: amchakra <amchakra@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/01/04 16:24:44 by panderss          #+#    #+#             */
-/*   Updated: 2020/01/28 20:30:38 by amchakra         ###   ########.fr       */
+/*   Created: 2020/01/28 19:07:15 by amchakra          #+#    #+#             */
+/*   Updated: 2020/01/28 19:39:32 by amchakra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
-t_piece		*add_piece(t_piece *ret, int *x, int *y, int n)
+char	**initialize_map(int newlines)
 {
-	t_piece *cursor = ret;
+	char	**map;
+	int		map_size;
+	int		sqr_size;
 
-	while (cursor->next != NULL)
-		cursor = cursor->next;
-	t_piece	*new_node =  create(x, y, cursor, NULL, n);
-	cursor->next = new_node;
+	sqr_size = 2;
+	while (sqr_size * sqr_size < ((newlines + 1) / 5) * 4)
+		sqr_size++;
+	map = create_map(sqr_size);
 
-	return (ret);
+	return (map);
 }
