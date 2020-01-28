@@ -6,13 +6,13 @@
 /*   By: panderss <panderss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/28 13:59:19 by panderss          #+#    #+#             */
-/*   Updated: 2020/01/27 18:00:18 by panderss         ###   ########.fr       */
+/*   Updated: 2020/01/28 12:07:44 by panderss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
-t_piece	*start_list(int *x, int *y)
+t_piece		*start_list(int *x, int *y)
 {
 	t_piece *start;
 
@@ -61,7 +61,7 @@ t_piece		*find_coords(char **grid)
 	while (j < 4)
 	{
 		i = 0;
-		while (grid[j][i] != '\0') 
+		while (grid[j][i] != '\0')
 		{
 			if (grid[j][i] == '#')
 				return (save_coords(grid, j, i));
@@ -69,20 +69,19 @@ t_piece		*find_coords(char **grid)
 		}
 		++j;
 	}
-	display_error(); 
+	display_error();
 	exit(-1);
 }
 
-/* Reads from file into 2D array, calls find_coords to store them in linked list. */
+/*Reads from file into 2D array, calls find_coords to store them.*/
 
 t_piece		*store_tetro(char *file, int newlines)
 {
 	static char	*grid[4];
-	int			ret;
 	int			lines_read;
 	t_piece		*start;
 	int			n;
-	char		*tmp; 
+	char		*tmp;
 
 	start = get_head(file);
 	tmp = ft_strsub(file, 21, ft_strlen(file));
@@ -96,8 +95,8 @@ t_piece		*store_tetro(char *file, int newlines)
 		lines_read = 0;
 		while (lines_read < 4)
 		{
-			ret = new_line(file, grid, lines_read);
-			lines_read++;
+			new_line(file, grid, lines_read);
+			++lines_read;
 		}
 		add_link(start, grid, n);
 		tmp = ft_strsub(file, 21, ft_strlen(file));
@@ -105,7 +104,7 @@ t_piece		*store_tetro(char *file, int newlines)
 		file = tmp;
 		newlines = newlines - 5;
 		++n;
-		free(grid[0]); /* This is how the free seems to have to work! Frag it! */
+		free(grid[0]);
 		free(grid[1]);
 		free(grid[2]);
 		free(grid[3]);

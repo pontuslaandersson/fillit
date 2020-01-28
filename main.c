@@ -6,30 +6,26 @@
 /*   By: panderss <panderss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/11 14:45:50 by panderss          #+#    #+#             */
-/*   Updated: 2020/01/27 18:58:27 by amchakra         ###   ########.fr       */
+/*   Updated: 2020/01/28 11:24:57 by panderss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 #include <fcntl.h>
 
-t_piece		*store_tetro(char *file, int newlines);
-
-int		check_tetrominos(char *file);
-
 /* Reads the file into a buffer, and which it joins to previously read */
 /* material. It keeps going until it has read the whole file into a string, */
 /* which it then returns. */
 
-char    *get_file(int fd)
+char	*get_file(int fd)
 {
-    static char *str;
-	char		buf[BUFF_SIZE + 1];
-	ssize_t		ret;
-	char		*tmp;
+	static char		*str;
+	char			buf[BUFF_SIZE + 1];
+	ssize_t			ret;
+	char			*tmp;
 
-    while ((ret = read(fd, buf, BUFF_SIZE)) > 0)
-    {
+	while ((ret = read(fd, buf, BUFF_SIZE)) > 0)
+	{
 		buf[ret] = '\0';
 		if (str == NULL)
 			str = ft_strnew(0);
@@ -48,10 +44,10 @@ char    *get_file(int fd)
 int		read_file(int fd)
 {
 	static char		*file;
-	int			ret;
-	t_piece		*head;
-	int			max;
-	
+	int				ret;
+	t_piece			*head;
+	int				max;
+
 	file = get_file(fd);
 	if (file == NULL)
 		return (-1);
@@ -74,20 +70,20 @@ int		main(int argc, char **argv)
 	if (argc != 2)
 	{
 		ft_putendl("usage: ./fillit tetromino_file");
-			return (-1); 
+		return (-1);
 	}
 	else
 	{
 		if (!(fd = open(argv[1], O_RDONLY)) || fd < 0 || fd > FD_MAX)
 		{
 			display_error();
-			return (-1); 
+			return (-1);
 		}
 		ret = read_file(fd);
 		if (ret == -1)
 		{
 			display_error();
-			return (-1); 
+			return (-1);
 		}
 	}
 	return (0);

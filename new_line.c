@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   new_line.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: panderss <panderss@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: panderss <panderss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/07 22:07:46 by panderss          #+#    #+#             */
-/*   Updated: 2020/01/25 16:38:16 by amchakra         ###   ########.fr       */
+/*   Updated: 2020/01/28 11:52:33 by panderss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
-int		new_line(char *file, char **grid, int lines_read)
+void		new_line(char *file, char **grid, int lines_read)
 {
 	char	*tmp;
 	int		len;
@@ -27,5 +27,4 @@ int		new_line(char *file, char **grid, int lines_read)
 		file = tmp;
 		ft_strdel(&tmp);
 	}
-	return (1);
 }
