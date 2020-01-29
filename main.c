@@ -6,16 +6,18 @@
 /*   By: panderss <panderss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/11 14:45:50 by panderss          #+#    #+#             */
-/*   Updated: 2020/01/28 11:24:57 by panderss         ###   ########.fr       */
+/*   Updated: 2020/01/29 10:18:27 by amchakra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 #include <fcntl.h>
 
-/* Reads the file into a buffer, and which it joins to previously read */
-/* material. It keeps going until it has read the whole file into a string, */
-/* which it then returns. */
+/*
+** Reads the file into a buffer, and which it joins to previously read
+** material. It keeps going until it has read the whole file into a string,
+** which it then returns.
+*/
 
 char	*get_file(int fd)
 {
@@ -38,8 +40,10 @@ char	*get_file(int fd)
 	return (str);
 }
 
-/* Where the action happens. Calls get_file, calls check_tetrominos, */
-/* calls store_tetro. */
+/*
+** Where the action happens. Calls get_file, calls check_tetrominos,
+** calls store_tetro.
+*/
 
 int		read_file(int fd)
 {
@@ -60,7 +64,9 @@ int		read_file(int fd)
 	return (0);
 }
 
-/* Main opens file and goes to read_file.*/
+/*
+** Main opens file and goes to read_file.
+*/
 
 int		main(int argc, char **argv)
 {
