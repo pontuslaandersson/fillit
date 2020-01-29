@@ -6,7 +6,7 @@
 #    By: panderss <panderss@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/12/12 11:30:19 by panderss          #+#    #+#              #
-#    Updated: 2020/01/29 16:53:50 by amchakra         ###   ########.fr        #
+#    Updated: 2020/01/29 22:02:39 by panderss         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,8 @@ NAME = fillit
 
 LIB = libft.a
 
-SRC = 	add_piece.c \
+SRC = 	add_link.c \
+		add_piece.c \
 		assign_letter.c \
 		check_candidate.c \
 		check_tetromino.c \
@@ -41,7 +42,7 @@ all: lib $(NAME)
 
 $(NAME):
 	gcc -c $(FLAGS) $(SRC) -I $(INCLUDES)
-	gcc -o $(NAME) -L libft -lft -I $(INCLUDES)
+	gcc -o $(NAME) $(OBJ) -L libft -lft -I $(INCLUDES)
 
 lib: 
 	make -C libft/ fclean && make -C libft/ && make -C libft/ clean

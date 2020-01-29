@@ -6,11 +6,24 @@
 /*   By: panderss <panderss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/28 14:09:47 by panderss          #+#    #+#             */
-/*   Updated: 2020/01/28 14:39:36 by panderss         ###   ########.fr       */
+/*   Updated: 2020/01/29 22:28:44 by panderss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
+
+int			check_overflow(t_piece *head, char **map, int x, int y)
+{
+	if ((head->x[0] + x + 1) > (int)ft_strlen(map[0]) ||
+		(head->x[1] + x + 1) > (int)ft_strlen(map[0]) ||
+		(head->x[2] + x + 1) > (int)ft_strlen(map[0]) ||
+		(head->y[0] + y + 1) > (int)ft_strlen(map[0]) ||
+		(head->y[1] + y + 1) > (int)ft_strlen(map[0]) ||
+		(head->y[2] + y + 1) > (int)ft_strlen(map[0]))
+		return (-1);
+	else
+		return (0);
+}
 
 int			check_negative(t_piece *head, char **map, int y)
 {
@@ -34,10 +47,7 @@ int			place_first(t_piece *head, char **map, int x, int y)
 	hash = 0;
 	j = 1;
 	x = check_negative(head, map, y);
-	if ((head->x[0] + x + 1) > ft_strlen(map[0]) || (head->x[1] + x + 1) >
-		ft_strlen(map[0]) || (head->x[2] + x + 1) > ft_strlen(map[0]) ||
-		(head->y[0] + y + 1) > ft_strlen(map[0]) || (head->y[1] + y + 1) >
-		ft_strlen(map[0]) || (head->y[2] + y + 1) > ft_strlen(map[0]))
+	if (check_overflow(head, map, x, y))
 		return (-1);
 	map[y][x] = head->letter;
 	while (hash < 3)

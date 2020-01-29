@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   solve_map.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: panderss <panderss@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: panderss <panderss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/28 13:55:02 by panderss          #+#    #+#             */
-/*   Updated: 2020/01/28 13:55:04 by panderss         ###   ########.fr       */
+/*   Updated: 2020/01/29 21:51:18 by panderss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int			backtrack(t_piece *cursor, char **map, int j, int i)
 	int replaced;
 
 	replaced = 0;
-	while (j < ft_strlen(map[0]) && replaced < 4)
+	while (j < (int)ft_strlen(map[0]) && replaced < 4)
 	{
 		while (map[j][i] != '\0')
 		{

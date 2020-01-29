@@ -6,7 +6,7 @@
 /*   By: panderss <panderss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/07 21:53:51 by panderss          #+#    #+#             */
-/*   Updated: 2020/01/28 12:30:53 by panderss         ###   ########.fr       */
+/*   Updated: 2020/01/29 21:55:28 by panderss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 t_piece		*get_head(char *file)
 {
 	static char	*start_grid[4];
-	int			ret;
 	int			lines_read;
 	t_piece		*start;
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_tetromino.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amchakra <amchakra@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: panderss <panderss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/27 15:44:55 by amchakra          #+#    #+#             */
-/*   Updated: 2020/01/27 20:10:31 by amchakra         ###   ########.fr       */
+/*   Updated: 2020/01/29 21:54:50 by panderss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 ** correct places
 */
 
-int	check_format(char *file, int c)
+int	check_format(char *file)
 {
 	int i;
 
@@ -84,13 +84,13 @@ int	check_tetro(char *file)
 		if (newline == 5)
 		{
 			if ((check_shape(file, (i - 21)) != 0) ||
-				(check_format(file, (i - 21)) != 0))
+				(check_format(file) != 0))
 				return (-1);
 			newline = 0;
 		}
 	}
 	if ((check_shape(file, (i - 20)) != 0) ||
-		(check_format(file, (i - 20)) != 0))
+		(check_format(file) != 0))
 		return (-1);
 	return (0);
 }

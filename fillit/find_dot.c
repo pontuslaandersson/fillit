@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   find_dot.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: panderss <panderss@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: panderss <panderss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/28 14:07:46 by panderss          #+#    #+#             */
-/*   Updated: 2020/01/28 14:07:50 by panderss         ###   ########.fr       */
+/*   Updated: 2020/01/29 21:55:48 by panderss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int		find_dot(t_piece *cursor, char **map, int x, int y)
 	int ret;
 
 	ret = 1;
-	while (y < ft_strlen(map[0]) && ret != 0)
+	while (y < (int)ft_strlen(map[0]) && ret != 0)
 	{
 		if (map[y][x] == '.')
 		{

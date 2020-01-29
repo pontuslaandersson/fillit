@@ -6,11 +6,35 @@
 /*   By: panderss <panderss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/28 13:59:19 by panderss          #+#    #+#             */
-/*   Updated: 2020/01/29 20:49:30 by amchakra         ###   ########.fr       */
+/*   Updated: 2020/01/29 21:41:57 by panderss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
+
+char		*trim_file_and_free_grid(char *file, char **grid)
+{
+	char *tmp;
+
+	tmp = ft_strsub(file, 21, ft_strlen(file));
+	free(file);
+	file = tmp;
+	free(grid[0]);
+	free(grid[1]);
+	free(grid[2]);
+	free(grid[3]);
+	return (file);
+}
+
+char		*trim_file(char *file)
+{
+	char *tmp;
+
+	tmp = ft_strsub(file, 21, ft_strlen(file));
+	free(file);
+	file = tmp;
+	return (file);
+}
 
 t_piece		*save_coords(char **grid, int j, int i)
 {
@@ -20,10 +44,9 @@ t_piece		*save_coords(char **grid, int j, int i)
 	int x[3];
 	int y[3];
 
-	start_x = i;
+	start_x = i - 1;
 	start_y = j;
 	count = 0;
-	++i;
 	while (count < 3 && j < 4)
 	{
 		while (grid[j][i] != '\0' && count < 3)
@@ -42,7 +65,9 @@ t_piece		*save_coords(char **grid, int j, int i)
 	return (create_list(x, y));
 }
 
-/* Finds hashes, saves their coords by calling save_choords. */
+/*
+** Finds hashes, saves their coords by calling save_choords.
+*/
 
 t_piece		*find_coords(char **grid)
 {
@@ -56,7 +81,7 @@ t_piece		*find_coords(char **grid)
 		while (grid[j][i] != '\0')
 		{
 			if (grid[j][i] == '#')
-				return (save_coords(grid, j, i));
+				return (save_coords(grid, j, i + 1));
 			++i;
 		}
 		++j;
@@ -65,7 +90,9 @@ t_piece		*find_coords(char **grid)
 	exit(-1);
 }
 
-/*Reads from file into 2D array, calls find_coords to store them.*/
+/*
+** Reads from file into 2D array, calls find_coords to store them.
+*/
 
 t_piece		*store_tetro(char *file, int newlines)
 {
@@ -73,16 +100,12 @@ t_piece		*store_tetro(char *file, int newlines)
 	int			lines_read;
 	t_piece		*start;
 	int			n;
-	char		*tmp;
 
 	start = get_head(file);
-	tmp = ft_strsub(file, 21, ft_strlen(file));
-	free(file);
-	file = tmp;
-	newlines = newlines - 5;
+	file = trim_file(file);
 	lines_read = 0;
 	n = 1;
-	while (newlines > 0)
+	while ((newlines - 5) > 0)
 	{
 		lines_read = 0;
 		while (lines_read < 4)
@@ -91,15 +114,9 @@ t_piece		*store_tetro(char *file, int newlines)
 			++lines_read;
 		}
 		add_link(start, grid, n);
-		tmp = ft_strsub(file, 21, ft_strlen(file));
-		free(file);
-		file = tmp;
+		file = trim_file_and_free_grid(file, grid);
 		newlines = newlines - 5;
 		++n;
-		free(grid[0]);
-		free(grid[1]);
-		free(grid[2]);
-		free(grid[3]);
 	}
 	free(file);
 	return (start);

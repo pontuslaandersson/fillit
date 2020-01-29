@@ -6,7 +6,7 @@
 /*   By: panderss <panderss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/28 13:03:04 by panderss          #+#    #+#             */
-/*   Updated: 2020/01/28 19:42:16 by amchakra         ###   ########.fr       */
+/*   Updated: 2020/01/29 22:23:12 by panderss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ char		**reinitialize_map(char **map)
 
 void		print_map(char **map)
 {
-	int				line;
+	size_t				line;
 
 	line = 0;
 	while (line < ft_strlen(map[0]))
@@ -50,6 +50,7 @@ void		free_map(char **map)
 			++i;
 		}
 	}
+	free(map);
 }
 
 /*
@@ -60,7 +61,6 @@ void		free_map(char **map)
 char		**initialize_map(int newlines)
 {
 	char			**map;
-	int				map_size;
 	int				sqr_size;
 
 	sqr_size = 2;
@@ -70,12 +70,11 @@ char		**initialize_map(int newlines)
 	return (map);
 }
 
-void		solve(t_piece *head, int newlines, int max)
+void		solve(t_piece *head, int newlines)
 {
 	static char		**map;
 	int				ret;
 	t_piece			*cursor;
-	int				n;
 
 	map = initialize_map(newlines);
 	ret = place_first(head, map, 0, 0);
