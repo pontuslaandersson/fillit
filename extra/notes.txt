@@ -47,18 +47,18 @@ main
 
 == Files normed ==
 
-		add_link.c 
-		add_piece.c 
+x		add_link.c 
+x		add_piece.c 
 x		check_candidate.c 
 x		check_tetromino.c 
-		create.c 
-		create_list.c 
-		create_map.c 
-		display_error.c 
+x		create.c 
+x		create_list.c 
+x		create_map.c 
+x		display_error.c 
 x		find_dot.c 
 x		get_head.c 
 x		main.c 
-		new_line.c 
+x		new_line.c 
 x		place_first.c
 x		solve.c 
 x		solve_map.c 
