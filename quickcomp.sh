@@ -1,5 +1,6 @@
 gcc add_link.c \
 add_piece.c \
+assign_letter.c \
 check_candidate.c \
 check_tetromino.c \
 create.c \
@@ -14,5 +15,4 @@ place_first.c \
 solve.c \
 solve_map.c \
 store_tetro.c \
-traverse_until.c \
 -L ./libft -lft -I ./libft/includes 

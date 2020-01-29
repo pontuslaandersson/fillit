@@ -63,4 +63,3 @@ x		place_first.c
 x		solve.c 
 x		solve_map.c 
 		store_tetro.c	
-		traverse_until.c 

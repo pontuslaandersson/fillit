@@ -6,13 +6,13 @@
 /*   By: panderss <panderss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/07 21:34:03 by panderss          #+#    #+#             */
-/*   Updated: 2020/01/25 11:28:15 by amchakra         ###   ########.fr       */
+/*   Updated: 2020/01/29 16:20:46 by panderss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
-t_piece		*save_addlink_coords(t_piece *start, char **grid, int j, int i, int n)
+t_piece		*save_addlink_coords(t_piece *start, char **grid, int j, int i)
 {
 	int count;
 	int start_x;
@@ -39,13 +39,14 @@ t_piece		*save_addlink_coords(t_piece *start, char **grid, int j, int i, int n)
 		i = 0;
 		++j;
 	}
-	return (add_piece(start, x, y, n));
+	return (add_piece(start, x, y));
 }
 
 t_piece		*add_link(t_piece *start, char **grid, int n)
 {
-	int i;
-	int j;
+	int			i;
+	int			j;
+	t_piece		*ret;
 
 	j = 0;
 	while (j < 4)
@@ -54,7 +55,11 @@ t_piece		*add_link(t_piece *start, char **grid, int n)
 		while (grid[j][i] != '\0')
 		{
 			if (grid[j][i] == '#')
-				return (save_addlink_coords(start, grid, j, i, n));
+			{
+				ret = save_addlink_coords(start, grid, j, i);
+				ret = assign_letter(start, n);
+				return (ret);
+			}
 			++i;
 		}
 		++j;
