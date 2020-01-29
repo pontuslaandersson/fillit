@@ -6,7 +6,7 @@
 /*   By: panderss <panderss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/04 13:32:32 by panderss          #+#    #+#             */
-/*   Updated: 2020/01/29 16:21:40 by panderss         ###   ########.fr       */
+/*   Updated: 2020/01/29 20:34:57 by amchakra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,6 @@ typedef	struct		s_piece
 	struct s_piece	*next;
 }					t_piece;
 
-
-/*void		backtrack(t_piece *cursor, char **map, int piece);*/
 t_piece		*assign_letter(t_piece *head, int n);
 void		print_map(char **map);
 char		**create_map(int n);
@@ -55,8 +53,6 @@ t_piece		*add_piece(t_piece *ret, int *x, int *y);
 t_piece		*find_coords(char **grid);
 t_piece		*get_head(char *file);
 t_piece		*save_coords(char **grid, int j, int i);
-t_piece		*start_list(int *x, int *y);
 t_piece		*store_tetro(char *file, int newlines);
-t_piece		*traverse_until(t_piece *head, int piece);
 
 #endif

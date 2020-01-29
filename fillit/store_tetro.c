@@ -6,19 +6,11 @@
 /*   By: panderss <panderss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/28 13:59:19 by panderss          #+#    #+#             */
-/*   Updated: 2020/01/29 15:41:05 by panderss         ###   ########.fr       */
+/*   Updated: 2020/01/29 20:49:30 by amchakra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
-
-t_piece		*start_list(int *x, int *y)
-{
-	t_piece *start;
-
-	start = create_list(x, y);
-	return (start);
-}
 
 t_piece		*save_coords(char **grid, int j, int i)
 {
@@ -47,7 +39,7 @@ t_piece		*save_coords(char **grid, int j, int i)
 		i = 0;
 		++j;
 	}
-	return (start_list(x, y));
+	return (create_list(x, y));
 }
 
 /* Finds hashes, saves their coords by calling save_choords. */
