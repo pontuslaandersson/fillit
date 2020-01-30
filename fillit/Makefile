@@ -45,14 +45,16 @@ $(NAME): lib
 	gcc -o $(NAME) $(OBJ) -L libft -lft -I $(INCLUDES)
 
 lib: 
-	make -C libft/ fclean && make -C libft/ && make -C libft/ clean
+	make -C libft/
 
 clean:
 	/bin/rm -f $(OBJ)
 	/bin/rm -f libft/$(LIB)
+	make -C libft/ clean
 
 fclean: clean
 	/bin/rm -f $(NAME)
+	make -C libft/ fclean
 
 re: fclean all
 
