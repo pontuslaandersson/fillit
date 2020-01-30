@@ -38,9 +38,9 @@ OBJ = $(SRC:.c=.o)
 
 FLAGS = -Wall -Wextra -Werror
 
-all: lib $(NAME)
+all: $(NAME)
 
-$(NAME):
+$(NAME): lib
 	gcc -c $(FLAGS) $(SRC) -I $(INCLUDES)
 	gcc -o $(NAME) $(OBJ) -L libft -lft -I $(INCLUDES)
 
@@ -49,6 +49,7 @@ lib:
 
 clean:
 	/bin/rm -f $(OBJ)
+	/bin/rm -f libft/$(LIB)
 
 fclean: clean
 	/bin/rm -f $(NAME)
