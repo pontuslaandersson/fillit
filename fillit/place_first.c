@@ -42,10 +42,8 @@ int			check_negative(t_piece *head, char **map, int y)
 int			place_first(t_piece *head, char **map, int x, int y)
 {
 	int hash;
-	int j;
 
 	hash = 0;
-	j = 1;
 	x = check_negative(head, map, y);
 	if (check_overflow(head, map, x, y))
 		return (-1);
