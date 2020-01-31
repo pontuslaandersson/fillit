@@ -6,7 +6,7 @@
 /*   By: panderss <panderss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/07 21:34:03 by panderss          #+#    #+#             */
-/*   Updated: 2020/01/29 21:29:42 by panderss         ###   ########.fr       */
+/*   Updated: 2020/01/31 11:28:48 by amchakra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ t_piece		*save_addlink_coords(t_piece *start, char **grid, int j, int i)
 /*
 ** Adds a node to the linked linked list containing our tetromino shapes.
 ** This is done by first finding a hash, and calling save_addlink_coords
-** to save the coordinates, and assign_letter to add the letter to the 
+** to save the coordinates, and assign_letter to add the letter to the
 ** node.
 */
 
@@ -76,5 +76,5 @@ t_piece		*add_link(t_piece *start, char **grid, int n)
 		++j;
 	}
 	display_error();
-	exit (-1);
+	exit(-1);
 }

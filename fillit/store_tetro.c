@@ -6,7 +6,7 @@
 /*   By: panderss <panderss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/28 13:59:19 by panderss          #+#    #+#             */
-/*   Updated: 2020/01/29 21:41:57 by panderss         ###   ########.fr       */
+/*   Updated: 2020/01/31 11:31:01 by amchakra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,7 +99,7 @@ t_piece		*find_coords(char **grid)
 		++j;
 	}
 	display_error();
-	exit (-1);
+	exit(-1);
 }
 
 /*

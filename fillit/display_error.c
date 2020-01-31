@@ -6,7 +6,7 @@
 /*   By: panderss <panderss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/23 14:39:29 by panderss          #+#    #+#             */
-/*   Updated: 2020/01/28 11:43:46 by panderss         ###   ########.fr       */
+/*   Updated: 2020/01/31 11:29:30 by amchakra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,5 +19,5 @@
 void	display_error(void)
 {
 	ft_putendl("error");
-	exit (-1);
+	exit(-1);
 }

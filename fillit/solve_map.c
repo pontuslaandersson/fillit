@@ -1,19 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   solve_map.c                                        :+:      :+:    :+:   */
+/*   add_link.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: panderss <panderss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/28 13:55:02 by panderss          #+#    #+#             */
-/*   Updated: 2020/01/29 21:51:18 by panderss         ###   ########.fr       */
+/*   Updated: 2020/01/31 11:38:05 by amchakra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
 /*
-** Removes a piece (replacing it with '.') and returns an int based on the 
+** Removes a piece (replacing it with '.') and returns an int based on the
 ** x/y coordinates + 1 (for use when re-placing the piece).
 */
 
