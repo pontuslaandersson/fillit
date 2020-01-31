@@ -12,6 +12,11 @@
 
 #include "fillit.h"
 
+/*
+** Moves to the end of the linked list, creates a new node with our coordinates
+** and returns the list. 
+*/
+
 t_piece		*add_piece(t_piece *ret, int *x, int *y)
 {
 	t_piece *cursor;

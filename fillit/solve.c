@@ -12,6 +12,11 @@
 
 #include "fillit.h"
 
+/*
+** Re-initializes map at size + 1 when and if solve_map realises it needs a
+** bigger map.
+*/
+
 char		**reinitialize_map(char **map)
 {
 	int n;
@@ -21,6 +26,10 @@ char		**reinitialize_map(char **map)
 	map = create_map(n + 1);
 	return (map);
 }
+
+/*
+** Prints the map once solve_map is complete.
+*/
 
 void		print_map(char **map)
 {
@@ -34,6 +43,10 @@ void		print_map(char **map)
 	}
 	free_map(map);
 }
+
+/*
+** Frees the map when it is no longer used.
+*/
 
 void		free_map(char **map)
 {
@@ -54,7 +67,7 @@ void		free_map(char **map)
 }
 
 /*
-** Find the initial size of the map using the number of tetros and
+** Finds the initial size of the map using the number of tetros and
 ** using the idea that the the smallest tetro needs a 2x2 square
 */
 
@@ -69,6 +82,13 @@ char		**initialize_map(int newlines)
 	map = create_map(sqr_size);
 	return (map);
 }
+
+/*
+** Initializes the map, places the first tetro, and then calls
+** solve_map to solve the smallest square, re-sizes the map if
+** solve_map returns -1, and prints the map upon solve_map
+** returning 0.
+*/
 
 void		solve(t_piece *head, int newlines)
 {

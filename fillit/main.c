@@ -79,16 +79,10 @@ int		main(int argc, char **argv)
 	else
 	{
 		if (!(fd = open(argv[1], O_RDONLY)) || fd < 0 || fd > FD_MAX)
-		{
 			display_error();
-			return (-1);
-		}
 		ret = read_file(fd);
 		if (ret == -1)
-		{
 			display_error();
-			return (-1);
-		}
 	}
 	return (0);
 }

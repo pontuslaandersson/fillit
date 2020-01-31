@@ -115,9 +115,9 @@ read -p "test-neg"
 printf '\n'
 read -p "valid square." 
 ./a.out tests/4_ValidSquare
-read -p	"6_valid" 
-./a.out tests/6_valid
 printf '\n'
+read -p	"valid_16" 
+./a.out tests/valid_16
 printf '\n'
 read -p "test-2a" 
 ./a.out tests/test-2a

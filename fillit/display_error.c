@@ -12,7 +12,12 @@
 
 #include "libft.h"
 
+/*
+** Displays error message and exits program.
+*/
+
 void	display_error(void)
 {
 	ft_putendl("error");
+	exit (-1);
 }

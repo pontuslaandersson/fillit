@@ -12,6 +12,11 @@
 
 #include "fillit.h"
 
+/*
+** Puts the coordinates relative to the first hash (x = 0, y = 0), putting them
+** into arrays. These are then saved by calling and returning add_piece.
+*/
+
 t_piece		*save_addlink_coords(t_piece *start, char **grid, int j, int i)
 {
 	int count;
@@ -41,6 +46,13 @@ t_piece		*save_addlink_coords(t_piece *start, char **grid, int j, int i)
 	return (add_piece(start, x, y));
 }
 
+/*
+** Adds a node to the linked linked list containing our tetromino shapes.
+** This is done by first finding a hash, and calling save_addlink_coords
+** to save the coordinates, and assign_letter to add the letter to the 
+** node.
+*/
+
 t_piece		*add_link(t_piece *start, char **grid, int n)
 {
 	int			i;
@@ -64,5 +76,5 @@ t_piece		*add_link(t_piece *start, char **grid, int n)
 		++j;
 	}
 	display_error();
-	exit(-1);
+	exit (-1);
 }

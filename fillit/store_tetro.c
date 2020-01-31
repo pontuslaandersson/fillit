@@ -12,6 +12,10 @@
 
 #include "fillit.h"
 
+/*
+** Trims the file, removing the tetromino just stored, and frees the grid.
+*/
+
 char		*trim_file_and_free_grid(char *file, char **grid)
 {
 	char *tmp;
@@ -26,6 +30,10 @@ char		*trim_file_and_free_grid(char *file, char **grid)
 	return (file);
 }
 
+/*
+** Trims the file, removing the tetromino just stored.
+*/
+
 char		*trim_file(char *file)
 {
 	char *tmp;
@@ -35,6 +43,10 @@ char		*trim_file(char *file)
 	file = tmp;
 	return (file);
 }
+
+/*
+** Saves the coordinates in int arrays, and sends them to create_list.
+*/
 
 t_piece		*save_coords(char **grid, int j, int i)
 {
@@ -66,7 +78,7 @@ t_piece		*save_coords(char **grid, int j, int i)
 }
 
 /*
-** Finds hashes, saves their coords by calling save_choords.
+** Finds hashes, saves their coordinates by calling save_choords.
 */
 
 t_piece		*find_coords(char **grid)
@@ -87,7 +99,7 @@ t_piece		*find_coords(char **grid)
 		++j;
 	}
 	display_error();
-	exit(-1);
+	exit (-1);
 }
 
 /*

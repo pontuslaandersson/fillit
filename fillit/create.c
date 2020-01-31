@@ -12,6 +12,12 @@
 
 #include "fillit.h"
 
+/*
+** Creates node element, stores our coordinates in it, and sets the pointers
+** to the previous element in the list and NULL (because the created node is
+** the last in the list), respectively.
+*/
+
 t_piece		*create(int *x, int *y, t_piece *prev)
 {
 	int			len;

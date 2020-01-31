@@ -12,6 +12,10 @@
 
 #include "fillit.h"
 
+/*
+** Extracts a new line from the source string (file), putting it into our grid.
+*/
+
 void		new_line(char *file, char **grid, int lines_read)
 {
 	char	*tmp;
