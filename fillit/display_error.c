@@ -14,5 +14,5 @@
 
 void	display_error(void)
 {
-	ft_putstr("error");
+	ft_putendl("error");
 }
