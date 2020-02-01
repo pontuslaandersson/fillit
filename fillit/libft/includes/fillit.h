@@ -36,9 +36,6 @@ int					check_tetrominos(char *file);
 int					find_dot(t_piece *cursor, char **map, int x, int y);
 void				new_line(char *file, char **grid, int lines_read);
 int					place_first(t_piece *head, char **map, int x, int y);
-int					place_piece(t_piece *head, char **map, int placed, int n,
-					int start);
-void				del_list(t_piece *head);
 void				display_error(void);
 void				free_map(char **map);
 void				print_list(t_piece *cursor);
